@@ -61,17 +61,6 @@
                 </div>
             </div>
 
-            <!-- Quick Tips -->
-            <div class="quick-tips">
-                <div class="section-title">💡 Совет дня</div>
-                <div class="tip-card">
-                    <div class="tip-icon">🧪</div>
-                    <div class="tip-content">
-                        <strong>Ретинол + Ниацинамид = ✅</strong>
-                        <p>Можно использовать вместе! Миф о несовместимости устарел.</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- RESULT SCREEN (Detailed) -->
@@ -468,7 +457,7 @@
                 </div>
 
                 <div class="enc-cat" onclick="showScreen('enc-skin')">
-                    <span class="cat-icon">👤</span>
+                    <span class="cat-icon">🧴</span>
                     <div class="cat-info">
                         <strong>Типы кожи</strong>
                         <p>Сухая, жирная, чувствительная</p>
@@ -519,7 +508,7 @@
                         </div>
                         <div class="ing-list-products">📦 La Roche-Posay Retinol B3, CeraVe Resurfacing, The Ordinary Retinol 0.5%, Neutrogena Rapid Wrinkle</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-vitc')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🍊</span>
                             <div class="ing-list-info">
@@ -530,7 +519,7 @@
                         </div>
                         <div class="ing-list-products">📦 SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%, Librederm Vit C</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-ha')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">💧</span>
                             <div class="ing-list-info">
@@ -541,7 +530,7 @@
                         </div>
                         <div class="ing-list-products">📦 The Ordinary Hyaluronic, Hada Labo Gokujyun, Vichy Minéral 89, Neutrogena Hydro Boost</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-niacinamide')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🧬</span>
                             <div class="ing-list-info">
@@ -552,7 +541,7 @@
                         </div>
                         <div class="ing-list-products">📦 The Ordinary Niacinamide 10%, CeraVe PM, Paula's Choice Niacinamide, Glossier Super Pure</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-acids')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🔬</span>
                             <div class="ing-list-info">
@@ -563,7 +552,7 @@
                         </div>
                         <div class="ing-list-products">📦 AHA: The Ordinary 30%, Pixi Glow Tonic | BHA: Paula's Choice, COSRX BHA</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-ceramides')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🛡️</span>
                             <div class="ing-list-info">
@@ -574,7 +563,7 @@
                         </div>
                         <div class="ing-list-products">📦 CeraVe (вся линейка!), Dr. Jart+ Ceramidin, Paula's Choice Barrier Repair</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-peptides')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🧬</span>
                             <div class="ing-list-info">
@@ -585,7 +574,7 @@
                         </div>
                         <div class="ing-list-products">📦 The Ordinary Buffet, Mizon Peptide, NIOD CAIS, сыворотки с "peptide"</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-bpo')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">💥</span>
                             <div class="ing-list-info">
@@ -596,7 +585,7 @@
                         </div>
                         <div class="ing-list-products">📦 Базирон АС, La Roche-Posay Effaclar Duo+, Clearasil, Acne-Aid</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-centella')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">🌿</span>
                             <div class="ing-list-info">
@@ -607,7 +596,7 @@
                         </div>
                         <div class="ing-list-products">📦 Dr. Jart+ Cicapair, COSRX Centella, La Roche-Posay Cicaplast, Purito Centella</div>
                     </div>
-                    <div class="ing-list-item-expanded">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-squalane')">
                         <div class="ing-list-main">
                             <span class="ing-list-icon">💎</span>
                             <div class="ing-list-info">
@@ -649,6 +638,219 @@
                         <span class="glossary-term">INCI</span>
                         <span class="glossary-def">Международные названия ингредиентов</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENTS ENCYCLOPEDIA SCREEN -->
+        <div class="screen" id="screen-enc-ingredients">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <h1 class="page-title">🧪 Ингредиенты</h1>
+            <p class="page-subtitle">Всё, что нужно знать об активных компонентах</p>
+
+            <!-- Anti-Age Ingredients -->
+            <div class="ing-category">
+                <h2 class="section-divider">⚡ Anti-age</h2>
+                
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-retinol')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">⚡</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Ретинол</span>
+                            <span class="ing-list-desc">Золотой стандарт anti-age: обновление клеток, стимуляция коллагена</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 La Roche-Posay Retinol B3, CeraVe Resurfacing, The Ordinary Retinol 0.5%</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-peptides')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🧬</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Пептиды</span>
+                            <span class="ing-list-desc">Сигнальные молекулы для выработки коллагена и эластина</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary Buffet, Mizon Peptide 500, NIOD CAIS</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-vitc')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🍊</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Витамин C</span>
+                            <span class="ing-list-desc">Антиоксидант: осветление, сияние, защита от свободных радикалов</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%</div>
+                </div>
+            </div>
+
+            <!-- Hydration Ingredients -->
+            <div class="ing-category">
+                <h2 class="section-divider">💧 Увлажнение</h2>
+                
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-ha')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">💧</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Гиалуроновая кислота</span>
+                            <span class="ing-list-desc">Связывает до 1000x своего веса воды</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary Hyaluronic, Hada Labo Gokujyun, Vichy Minéral 89</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-ceramides')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🛡️</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Церамиды</span>
+                            <span class="ing-list-desc">Восстанавливают липидный барьер кожи</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 CeraVe (вся линейка!), Dr. Jart+ Ceramidin, Paula's Choice Barrier</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-squalane')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">💎</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Сквалан</span>
+                            <span class="ing-list-desc">Эмолент: увлажнение без жирности, для всех типов кожи</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary Squalane, Biossance, Paula's Choice Moisture Boost</div>
+                </div>
+            </div>
+
+            <!-- Exfoliation Ingredients -->
+            <div class="ing-category">
+                <h2 class="section-divider">🔬 Отшелушивание</h2>
+                
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-acids')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🍋</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">AHA-кислоты (гликолевая, молочная)</span>
+                            <span class="ing-list-desc">Поверхностное отшелушивание, сияние, выравнивание тона</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary AHA 30%, Pixi Glow Tonic, Paula's Choice AHA, пилинги Holy Land</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-acids')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🔬</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">BHA-кислота (салициловая)</span>
+                            <span class="ing-list-desc">Очищение пор изнутри, для жирной и проблемной кожи</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 Paula's Choice BHA 2%, COSRX BHA, The Ordinary Salicylic Acid</div>
+                </div>
+
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-acids')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">⚪</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">PHA-кислоты (глюконолактон)</span>
+                            <span class="ing-list-desc">Мягкое отшелушивание для чувствительной кожи</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 COSRX PHA, The Inkey List PHA Toner, Neostrata Bionic Face Cream</div>
+                </div>
+            </div>
+
+            <!-- Acne-Fighting Ingredients -->
+            <div class="ing-category">
+                <h2 class="section-divider">💥 Против акне</h2>
+                
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-bpo')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">💥</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Бензоилпероксид (BPO)</span>
+                            <span class="ing-list-desc">Убивает бактерии P. acnes, очищает поры</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 Базирон АС, La Roche-Posay Effaclar Duo+, Clearasil, Acne-Aid</div>
+                </div>
+
+                <div class="ing-list-item-expanded">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🧬</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Ниацинамид (Витамин B3)</span>
+                            <span class="ing-list-desc">Сужает поры, регулирует себум, укрепляет барьер</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary Niacinamide 10%, CeraVe PM, Paula's Choice Niacinamide</div>
+                </div>
+
+                <div class="ing-list-item-expanded">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🍵</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Азелаиновая кислота</span>
+                            <span class="ing-list-desc">Антибактериальное, осветление постакне</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 The Ordinary Azelaic Acid 10%, Paula's Choice Azelaic Acid, Skinoren</div>
+                </div>
+            </div>
+
+            <!-- Soothing Ingredients -->
+            <div class="ing-category">
+                <h2 class="section-divider">🌿 Успокаивающие</h2>
+                
+                <div class="ing-list-item-expanded" onclick="showScreen('ing-centella')">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🌿</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Центелла азиатская (Cica)</span>
+                            <span class="ing-list-desc">Заживление, восстановление, для чувствительной кожи</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 Dr. Jart+ Cicapair, COSRX Centella, La Roche-Posay Cicaplast</div>
+                </div>
+
+                <div class="ing-list-item-expanded">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🌾</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Пантенол (Провитамин B5)</span>
+                            <span class="ing-list-desc">Заживление, увлажнение, снятие раздражения</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 La Roche-Posay Cicaplast B5, Bepanthen, SVR Cicavit+</div>
+                </div>
+
+                <div class="ing-list-item-expanded">
+                    <div class="ing-list-main">
+                        <span class="ing-list-icon">🌸</span>
+                        <div class="ing-list-info">
+                            <span class="ing-list-name">Аллантоин</span>
+                            <span class="ing-list-desc">Смягчение, заживление микроповреждений</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="ing-list-products">📦 CeraVe кремы, Eucerin, многие детские кремы</div>
                 </div>
             </div>
         </div>
@@ -756,6 +958,71 @@
                 </div>
             </div>
 
+            <!-- Product Examples -->
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с ретинолом</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">89</div>
+                        <div class="product-info">
+                            <div class="product-name">La Roche-Posay Retinol B3 Serum</div>
+                            <div class="product-details">0.3% ретинол + ниацинамид + гиалуроновая</div>
+                            <div class="product-price">~2500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">87</div>
+                        <div class="product-info">
+                            <div class="product-name">CeraVe Resurfacing Retinol Serum</div>
+                            <div class="product-details">Инкапсулированный ретинол + ниацинамид + церамиды</div>
+                            <div class="product-price">~1800 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                            <span class="tag tag-value">Цена/качество</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">91</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary Retinol 0.5% in Squalane</div>
+                            <div class="product-details">0.5% чистый ретинол в сквалане</div>
+                            <div class="product-price">~650 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-medium">Средний уровень</span>
+                            <span class="tag tag-budget">Бюджетно</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">82</div>
+                        <div class="product-info">
+                            <div class="product-name">Neutrogena Rapid Wrinkle Repair</div>
+                            <div class="product-details">Ретинол SA + гиалуроновая кислота</div>
+                            <div class="product-price">~1200 ₽ / 29 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">94</div>
+                        <div class="product-info">
+                            <div class="product-name">Paula's Choice 1% Retinol Treatment</div>
+                            <div class="product-details">1% ретинол + пептиды + антиоксиданты</div>
+                            <div class="product-price">~4500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-advanced">Продвинутый</span>
+                            <span class="tag tag-premium">Премиум</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Warnings -->
             <div class="warnings-section">
                 <div class="section-title">⚠️ Важно знать</div>
@@ -767,11 +1034,1012 @@
             </div>
         </div>
 
+        <!-- INGREDIENT DETAIL: VITAMIN C -->
+        <div class="screen" id="screen-ing-vitc">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🍊</div>
+                <div class="ing-detail-title">
+                    <h1>Витамин C</h1>
+                    <span class="ing-detail-inci">Ascorbic Acid, Sodium Ascorbyl Phosphate, Ascorbyl Glucoside</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Мощнейший антиоксидант. Осветляет пигментацию, защищает от свободных радикалов, стимулирует коллаген и придаёт сияние.</p>
+            </div>
+
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Формы витамина C</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Форма</span>
+                        <span>Эффективность</span>
+                        <span>Стабильность</span>
+                    </div>
+                    <div class="form-row">
+                        <span>L-Ascorbic Acid</span>
+                        <span class="strength">100%</span>
+                        <span class="irritation high">Низкая</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Ascorbyl Tetraisopalmitate</span>
+                        <span class="strength">50%</span>
+                        <span class="irritation low">Высокая</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Sodium Ascorbyl Phosphate</span>
+                        <span class="strength">30%</span>
+                        <span class="irritation low">Высокая</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Ascorbyl Glucoside</span>
+                        <span class="strength">20%</span>
+                        <span class="irritation low">Высокая</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с витамином C</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">96</div>
+                        <div class="product-info">
+                            <div class="product-name">SkinCeuticals CE Ferulic</div>
+                            <div class="product-details">15% L-AA + витамин E + феруловая кислота</div>
+                            <div class="product-price">~12000 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                            <span class="tag tag-advanced">Эталон</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">92</div>
+                        <div class="product-info">
+                            <div class="product-name">Timeless Vitamin C + E + Ferulic</div>
+                            <div class="product-details">20% L-AA + витамин E + феруловая</div>
+                            <div class="product-price">~2500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Цена/качество</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">88</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary Vitamin C 23% + HA</div>
+                            <div class="product-details">23% L-AA + гиалуроновая кислота</div>
+                            <div class="product-price">~700 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                            <span class="tag tag-advanced">Высокая %</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">84</div>
+                        <div class="product-info">
+                            <div class="product-name">Librederm Vitamin C Serum</div>
+                            <div class="product-details">Стабильная форма витамина C</div>
+                            <div class="product-price">~900 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">81</div>
+                        <div class="product-info">
+                            <div class="product-name">Melano CC Intensive Anti-Spot</div>
+                            <div class="product-details">Активный витамин C + витамин E</div>
+                            <div class="product-price">~1200 ₽ / 20 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Витамин E</span>
+                        <span class="compat-tip">Усиливает эффект!</span>
+                    </div>
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Феруловая кислота</span>
+                        <span class="compat-tip">Стабилизирует</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Ниацинамид</span>
+                        <span class="compat-tip">Подождать 15 мин</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Ретинол</span>
+                        <span class="compat-tip">Разделить утро/вечер</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">⚠️ Важно знать</div>
+                <div class="warning-card">
+                    <p>☀️ <strong>Использовать:</strong> утром под SPF для защиты от фотостарения</p>
+                    <p>🧪 <strong>pH:</strong> L-AA работает при pH 2.5-3.5</p>
+                    <p>⏱️ <strong>Хранение:</strong> в тёмном прохладном месте, быстро окисляется</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: HYALURONIC ACID -->
+        <div class="screen" id="screen-ing-ha">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">💧</div>
+                <div class="ing-detail-title">
+                    <h1>Гиалуроновая кислота</h1>
+                    <span class="ing-detail-inci">Hyaluronic Acid, Sodium Hyaluronate</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Молекула-магнит для воды. Связывает до 1000x своего веса в воде, обеспечивая глубокое увлажнение и упругость кожи.</p>
+            </div>
+
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Молекулярные веса</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Тип</span>
+                        <span>Молекулярный вес</span>
+                        <span>Действие</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Высокомолекулярная</span>
+                        <span class="strength">>1000 kDa</span>
+                        <span class="irritation low">Плёнка на поверхности</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Среднемолекулярная</span>
+                        <span class="strength">100-1000 kDa</span>
+                        <span class="irritation low">Увлажнение + барьер</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Низкомолекулярная</span>
+                        <span class="strength"><100 kDa</span>
+                        <span class="irritation low">Проникает глубже</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с гиалуроновой кислотой</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">93</div>
+                        <div class="product-info">
+                            <div class="product-name">Hada Labo Gokujyun Premium Lotion</div>
+                            <div class="product-details">5 видов гиалуроновой кислоты + мочевина</div>
+                            <div class="product-price">~1500 ₽ / 170 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Цена/качество</span>
+                            <span class="tag tag-beginner">Классика</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">90</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary Hyaluronic Acid 2% + B5</div>
+                            <div class="product-details">2% HA разных молекулярных весов + пантенол</div>
+                            <div class="product-price">~600 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">89</div>
+                        <div class="product-info">
+                            <div class="product-name">Vichy Minéral 89</div>
+                            <div class="product-details">HA + термальная вода Vichy 89%</div>
+                            <div class="product-price">~2000 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">85</div>
+                        <div class="product-info">
+                            <div class="product-name">Neutrogena Hydro Boost Water Gel</div>
+                            <div class="product-details">Гиалуроновая кислота в лёгком геле</div>
+                            <div class="product-price">~800 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                            <span class="tag tag-budget">Доступно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Всё!</span>
+                        <span class="compat-tip">Универсальный ингредиент</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">💡 Лайфхак</div>
+                <div class="warning-card">
+                    <p>💧 <strong>Важно:</strong> наносить на ВЛАЖНУЮ кожу или во влажном климате</p>
+                    <p>🏜️ <strong>В сухом климате:</strong> может тянуть воду из кожи наружу</p>
+                    <p>🧴 <strong>Запечатать:</strong> всегда наносить крем/масло поверх</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: NIACINAMIDE -->
+        <div class="screen" id="screen-ing-niacinamide">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🧬</div>
+                <div class="ing-detail-title">
+                    <h1>Ниацинамид</h1>
+                    <span class="ing-detail-inci">Niacinamide, Nicotinamide, Vitamin B3</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Универсальный ингредиент: сужает поры, контролирует жирность, осветляет пигментацию, укрепляет барьер. Подходит всем типам кожи.</p>
+            </div>
+
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Концентрации для разных целей</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Цель</span>
+                        <span>Концентрация</span>
+                        <span>Срок результата</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Укрепление барьера</span>
+                        <span class="strength">2-4%</span>
+                        <span class="irritation low">2-4 недели</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Осветление</span>
+                        <span class="strength">5%</span>
+                        <span class="irritation low">4-8 недель</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Контроль себума</span>
+                        <span class="strength">2-5%</span>
+                        <span class="irritation low">4-6 недель</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Сужение пор</span>
+                        <span class="strength">10%</span>
+                        <span class="irritation med">8-12 недель</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с ниацинамидом</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">91</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary Niacinamide 10% + Zinc 1%</div>
+                            <div class="product-details">10% ниацинамид + цинк для контроля себума</div>
+                            <div class="product-price">~550 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                            <span class="tag tag-value">Бестселлер</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">89</div>
+                        <div class="product-info">
+                            <div class="product-name">Paula's Choice 10% Niacinamide Booster</div>
+                            <div class="product-details">10% ниацинамид + пантенол + антиоксиданты</div>
+                            <div class="product-price">~3500 ₽ / 20 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">87</div>
+                        <div class="product-info">
+                            <div class="product-name">CeraVe PM Facial Moisturizing Lotion</div>
+                            <div class="product-details">4% ниацинамид + церамиды + гиалуроновая</div>
+                            <div class="product-price">~1200 ₽ / 52 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                            <span class="tag tag-value">2-в-1</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">83</div>
+                        <div class="product-info">
+                            <div class="product-name">Glossier Super Pure</div>
+                            <div class="product-details">5% ниацинамид + цинк</div>
+                            <div class="product-price">~2800 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Ретинол</span>
+                        <span class="compat-tip">Отличная пара!</span>
+                    </div>
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Гиалуроновая</span>
+                        <span class="compat-tip">Идеально вместе</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Витамин C (чистый)</span>
+                        <span class="compat-tip">Подождать 15-20 мин</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: AHA/BHA -->
+        <div class="screen" id="screen-ing-acids">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🔬</div>
+                <div class="ing-detail-title">
+                    <h1>AHA/BHA кислоты</h1>
+                    <span class="ing-detail-inci">Glycolic, Lactic, Salicylic Acid</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Химическая эксфолиация: обновление клеток, чистые поры, ровный тон. AHA — для поверхности, BHA — проникает в поры.</p>
+            </div>
+
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Типы кислот</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Кислота</span>
+                        <span>Тип</span>
+                        <span>Лучше для</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Гликолевая</span>
+                        <span class="strength">AHA</span>
+                        <span class="irritation med">Anti-age, пигментация</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Молочная</span>
+                        <span class="strength">AHA</span>
+                        <span class="irritation low">Чувствительная кожа</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Салициловая</span>
+                        <span class="strength">BHA</span>
+                        <span class="irritation med">Жирная, акне, поры</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Миндальная</span>
+                        <span class="strength">AHA</span>
+                        <span class="irritation low">Начинающим</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с кислотами</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">94</div>
+                        <div class="product-info">
+                            <div class="product-name">Paula's Choice 2% BHA Liquid Exfoliant</div>
+                            <div class="product-details">2% салициловая кислота, pH 3.2</div>
+                            <div class="product-price">~3200 ₽ / 118 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Эталон BHA</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">90</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary AHA 30% + BHA 2%</div>
+                            <div class="product-details">30% AHA + 2% BHA пилинг-маска</div>
+                            <div class="product-price">~700 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-advanced">Интенсивный</span>
+                            <span class="tag tag-budget">Бюджетно</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">88</div>
+                        <div class="product-info">
+                            <div class="product-name">COSRX BHA Blackhead Power Liquid</div>
+                            <div class="product-details">4% бетаин салицилат (мягче обычного BHA)</div>
+                            <div class="product-price">~1600 ₽ / 100 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                            <span class="tag tag-value">K-beauty</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">85</div>
+                        <div class="product-info">
+                            <div class="product-name">Pixi Glow Tonic</div>
+                            <div class="product-details">5% гликолевая кислота + алоэ</div>
+                            <div class="product-price">~1800 ₽ / 100 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">82</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary Salicylic Acid 2%</div>
+                            <div class="product-details">2% салициловая кислота</div>
+                            <div class="product-price">~550 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Ретинол</span>
+                        <span class="compat-tip">Чередовать дни</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Витамин C</span>
+                        <span class="compat-tip">Разный pH — подождать</span>
+                    </div>
+                    <div class="compat-row compat-no">
+                        <span class="compat-icon">❌</span>
+                        <span>Бензоилпероксид</span>
+                        <span class="compat-tip">Слишком агрессивно</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">⚠️ Важно знать</div>
+                <div class="warning-card">
+                    <p>☀️ <strong>SPF обязательно:</strong> кислоты повышают фоточувствительность</p>
+                    <p>🐌 <strong>Начинать:</strong> 1-2 раза в неделю, постепенно увеличивать</p>
+                    <p>🔥 <strong>Покалывание:</strong> нормально до 5 минут, жжение — смыть!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: CERAMIDES -->
+        <div class="screen" id="screen-ing-ceramides">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🛡️</div>
+                <div class="ing-detail-title">
+                    <h1>Церамиды</h1>
+                    <span class="ing-detail-inci">Ceramide NP, Ceramide AP, Ceramide EOP</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Кирпичики кожного барьера. Удерживают влагу, защищают от внешних факторов, восстанавливают повреждённую кожу.</p>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с церамидами</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">93</div>
+                        <div class="product-info">
+                            <div class="product-name">CeraVe Moisturizing Cream</div>
+                            <div class="product-details">3 церамида + гиалуроновая + холестерол</div>
+                            <div class="product-price">~1000 ₽ / 340 г</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Эталон</span>
+                            <span class="tag tag-beginner">Для всех</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">91</div>
+                        <div class="product-info">
+                            <div class="product-name">Dr. Jart+ Ceramidin Cream</div>
+                            <div class="product-details">5 церамидов + пантенол</div>
+                            <div class="product-price">~3500 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                            <span class="tag tag-value">K-beauty</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">88</div>
+                        <div class="product-info">
+                            <div class="product-name">La Roche-Posay Toleriane Double Repair</div>
+                            <div class="product-details">Церамиды + ниацинамид + пребиотики</div>
+                            <div class="product-price">~1800 ₽ / 75 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для чувствительной</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">85</div>
+                        <div class="product-info">
+                            <div class="product-name">Paula's Choice Barrier Repair Moisturizer</div>
+                            <div class="product-details">Церамиды + сквалан + ретинол</div>
+                            <div class="product-price">~3000 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-medium">Многофункц.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Всё!</span>
+                        <span class="compat-tip">Идеальный компаньон для активов</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">💡 Совет</div>
+                <div class="warning-card">
+                    <p>🔑 <strong>Золотое соотношение:</strong> церамиды + холестерол + жирные кислоты (3:1:1)</p>
+                    <p>🧴 <strong>Когда нужны:</strong> после кислот, ретинола, при сухости, атопии</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: PEPTIDES -->
+        <div class="screen" id="screen-ing-peptides">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🧬</div>
+                <div class="ing-detail-title">
+                    <h1>Пептиды</h1>
+                    <span class="ing-detail-inci">Matrixyl, Argireline, Copper Peptides</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Сигнальные молекулы для кожи. Стимулируют выработку коллагена, эластина, подтягивают и разглаживают морщины.</p>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с пептидами</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">92</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary "Buffet"</div>
+                            <div class="product-details">Matrixyl + Argireline + пробиотики + HA</div>
+                            <div class="product-price">~1200 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Цена/качество</span>
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">94</div>
+                        <div class="product-info">
+                            <div class="product-name">NIOD Copper Amino Isolate Serum</div>
+                            <div class="product-details">Медные пептиды высокой концентрации</div>
+                            <div class="product-price">~5500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                            <span class="tag tag-advanced">Продвинутый</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">86</div>
+                        <div class="product-info">
+                            <div class="product-name">Mizon Peptide 500</div>
+                            <div class="product-details">500 000 ppm пептидов</div>
+                            <div class="product-price">~1500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">K-beauty</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">84</div>
+                        <div class="product-info">
+                            <div class="product-name">Olay Regenerist Micro-Sculpting Cream</div>
+                            <div class="product-details">Пептиды + ниацинамид + антиоксиданты</div>
+                            <div class="product-price">~2000 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Массмаркет</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Ниацинамид</span>
+                        <span class="compat-tip">Отличная anti-age пара</span>
+                    </div>
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Гиалуроновая</span>
+                        <span class="compat-tip">Увлажнение + лифтинг</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Медные пептиды + C</span>
+                        <span class="compat-tip">Разделить утро/вечер</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: BPO -->
+        <div class="screen" id="screen-ing-bpo">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">💥</div>
+                <div class="ing-detail-title">
+                    <h1>Бензоилпероксид</h1>
+                    <span class="ing-detail-inci">Benzoyl Peroxide (BPO)</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Убийца бактерий акне №1. Уничтожает P. acnes, уменьшает воспаления. Работает быстро, но может сушить.</p>
+            </div>
+
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Концентрации</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Концентрация</span>
+                        <span>Для кого</span>
+                        <span>Сухость</span>
+                    </div>
+                    <div class="form-row">
+                        <span>2.5%</span>
+                        <span class="strength">Начинающим</span>
+                        <span class="irritation low">Минимальная</span>
+                    </div>
+                    <div class="form-row">
+                        <span>5%</span>
+                        <span class="strength">Умеренное акне</span>
+                        <span class="irritation med">Средняя</span>
+                    </div>
+                    <div class="form-row">
+                        <span>10%</span>
+                        <span class="strength">Сильное акне</span>
+                        <span class="irritation high">Высокая</span>
+                    </div>
+                </div>
+                <p class="tip-text">💡 Исследования: 2.5% так же эффективен как 10%, но меньше сушит!</p>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с бензоилпероксидом</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">89</div>
+                        <div class="product-info">
+                            <div class="product-name">Базирон АС 2.5%</div>
+                            <div class="product-details">2.5% BPO, гель</div>
+                            <div class="product-price">~800 ₽ / 40 г</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                            <span class="tag tag-value">Аптека</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">87</div>
+                        <div class="product-info">
+                            <div class="product-name">La Roche-Posay Effaclar Duo+</div>
+                            <div class="product-details">BPO + ниацинамид + LHA</div>
+                            <div class="product-price">~1500 ₽ / 40 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Для начинающих</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">83</div>
+                        <div class="product-info">
+                            <div class="product-name">Acne-Aid Gel 2.5%</div>
+                            <div class="product-details">2.5% BPO</div>
+                            <div class="product-price">~600 ₽ / 30 г</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">80</div>
+                        <div class="product-info">
+                            <div class="product-name">Clearasil Ultra Rapid Action</div>
+                            <div class="product-details">10% BPO — для точечного применения</div>
+                            <div class="product-price">~500 ₽ / 15 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-advanced">Точечно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-no">
+                        <span class="compat-icon">❌</span>
+                        <span>Ретинол</span>
+                        <span class="compat-tip">Инактивирует!</span>
+                    </div>
+                    <div class="compat-row compat-no">
+                        <span class="compat-icon">❌</span>
+                        <span>Витамин C</span>
+                        <span class="compat-tip">Окисляет</span>
+                    </div>
+                    <div class="compat-row compat-no">
+                        <span class="compat-icon">❌</span>
+                        <span>AHA/BHA</span>
+                        <span class="compat-tip">Слишком агрессивно</span>
+                    </div>
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Ниацинамид</span>
+                        <span class="compat-tip">Снижает сухость</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">⚠️ Важно знать</div>
+                <div class="warning-card">
+                    <p>👕 <strong>Осторожно:</strong> отбеливает ткани — белые полотенца и наволочки!</p>
+                    <p>☀️ <strong>SPF:</strong> обязательно, повышает фоточувствительность</p>
+                    <p>🧴 <strong>Увлажнение:</strong> обязательно, сильно сушит</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: CENTELLA -->
+        <div class="screen" id="screen-ing-centella">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">🌿</div>
+                <div class="ing-detail-title">
+                    <h1>Центелла азиатская</h1>
+                    <span class="ing-detail-inci">Centella Asiatica, Madecassoside, Asiaticoside</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Легендарный успокаивающий ингредиент. Заживляет, снимает воспаления, укрепляет барьер. Идеален для чувствительной кожи.</p>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства с центеллой</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">92</div>
+                        <div class="product-info">
+                            <div class="product-name">Dr. Jart+ Cicapair Tiger Grass Cream</div>
+                            <div class="product-details">Центелла + цинк + пантенол</div>
+                            <div class="product-price">~3000 ₽ / 50 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                            <span class="tag tag-value">Эталон CICA</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">90</div>
+                        <div class="product-info">
+                            <div class="product-name">COSRX Centella Blemish Cream</div>
+                            <div class="product-details">Центелла 50% + цинк + пантенол</div>
+                            <div class="product-price">~1200 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">K-beauty</span>
+                            <span class="tag tag-beginner">Точечно</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">88</div>
+                        <div class="product-info">
+                            <div class="product-name">La Roche-Posay Cicaplast Baume B5</div>
+                            <div class="product-details">Мадекассосид + пантенол 5% + медь + цинк</div>
+                            <div class="product-price">~900 ₽ / 40 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Аптека</span>
+                            <span class="tag tag-beginner">Универсал</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">85</div>
+                        <div class="product-info">
+                            <div class="product-name">Purito Centella Unscented Serum</div>
+                            <div class="product-details">49% центелла + ниацинамид</div>
+                            <div class="product-price">~1100 ₽ / 60 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-beginner">Без отдушек</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Всё!</span>
+                        <span class="compat-tip">Успокаивает после активов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: SQUALANE -->
+        <div class="screen" id="screen-ing-squalane">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">💎</div>
+                <div class="ing-detail-title">
+                    <h1>Сквалан</h1>
+                    <span class="ing-detail-inci">Squalane (гидрогенизированный сквален)</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Идентичен кожному себуму. Увлажняет без жирности, подходит абсолютно всем типам кожи, включая жирную.</p>
+            </div>
+
+            <div class="product-examples">
+                <div class="section-title">📦 Средства со скваланом</div>
+                <div class="product-list">
+                    <div class="product-card">
+                        <div class="product-score score-excellent">93</div>
+                        <div class="product-info">
+                            <div class="product-name">The Ordinary 100% Plant-Derived Squalane</div>
+                            <div class="product-details">100% чистый сквалан из сахарного тростника</div>
+                            <div class="product-price">~600 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-budget">Бюджетно</span>
+                            <span class="tag tag-value">Чистый</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-excellent">91</div>
+                        <div class="product-info">
+                            <div class="product-name">Biossance 100% Squalane Oil</div>
+                            <div class="product-details">100% сквалан из сахарного тростника</div>
+                            <div class="product-price">~2500 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-premium">Премиум</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">87</div>
+                        <div class="product-info">
+                            <div class="product-name">Paula's Choice Moisture Boost</div>
+                            <div class="product-details">Сквалан + церамиды + антиоксиданты</div>
+                            <div class="product-price">~3000 ₽ / 60 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-medium">Многофункц.</span>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-score score-good">85</div>
+                        <div class="product-info">
+                            <div class="product-name">Timeless Squalane Oil</div>
+                            <div class="product-details">100% сквалан из оливы</div>
+                            <div class="product-price">~1000 ₽ / 30 мл</div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="tag tag-value">Цена/качество</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Всё!</span>
+                        <span class="compat-tip">Универсальный эмолент</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnings-section">
+                <div class="section-title">💡 Как использовать</div>
+                <div class="warning-card">
+                    <p>💧 <strong>Нанесение:</strong> 2-3 капли на влажную кожу или смешать с кремом</p>
+                    <p>🧴 <strong>Порядок:</strong> после водных сывороток, перед/вместо крема</p>
+                    <p>💇 <strong>Для волос:</strong> тоже отлично — блеск без жирности</p>
+                </div>
+            </div>
+        </div>
+
         <!-- SKIN TYPES SCREEN -->
         <div class="screen" id="screen-enc-skin">
             <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
             
-            <h1 class="page-title">👤 Типы кожи</h1>
+            <h1 class="page-title">🧴 Типы кожи</h1>
             <p class="page-subtitle">Выбери свой тип для персональных рекомендаций</p>
 
             <div class="skin-type-card">
@@ -796,35 +2064,32 @@
                     </ol>
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуемые ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🛡️ Церамиды</span>
                             <span class="chip-why">восстанавливают барьер — ключевой ингредиент!</span>
+                            <span class="chip-products">📦 CeraVe Moisturizing Cream, Dr. Jart+ Ceramidin, La Roche-Posay Toleriane</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">💎 Сквалан</span>
-                            <span class="chip-why">идентичен кожному себуму</span>
+                            <span class="chip-why">идентичен кожному себуму — увлажняет без жирности</span>
+                            <span class="chip-products">📦 The Ordinary Squalane, Biossance Squalane Oil, Paula's Choice Moisture Boost</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💧 Гиалуроновая</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">💧 Гиалуроновая кислота</span>
                             <span class="chip-why">притягивает до 1000x воды</span>
+                            <span class="chip-products">📦 The Ordinary Hyaluronic Acid, Hada Labo Gokujyun, Vichy Minéral 89</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🧈 Масло ши</span>
-                            <span class="chip-why">питание, защита от ТЭПВ</span>
+                            <span class="chip-why">питание, защита от потери влаги</span>
+                            <span class="chip-products">📦 L'Occitane Shea Butter, Kiehl's Ultra Facial Cream, Weleda Skin Food</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💦 Глицерин 5-10%</span>
-                            <span class="chip-why">базовый увлажнитель</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 Мочевина 5-10%</span>
-                            <span class="chip-why">NMF + мягкая эксфолиация</span>
-                        </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🌿 Пантенол</span>
                             <span class="chip-why">заживление, смягчение</span>
+                            <span class="chip-products">📦 La Roche-Posay Cicaplast B5, Bepanthen, SVR Cicavit+</span>
                         </div>
                     </div>
                 </div>
@@ -873,31 +2138,27 @@
                     </ol>
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуемые ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">🧬 Ниацинамид 2-5%</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧬 Ниацинамид</span>
                             <span class="chip-why">контроль себума за 4-6 недель</span>
+                            <span class="chip-products">📦 The Ordinary Niacinamide 10%, Paula's Choice Niacinamide Booster, CeraVe PM</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 Салициловая 0.5-2%</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 Салициловая кислота (BHA)</span>
                             <span class="chip-why">очищает поры изнутри</span>
+                            <span class="chip-products">📦 Paula's Choice BHA 2%, COSRX BHA Power Liquid, The Ordinary Salicylic Acid</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">⚡ Цинк PCA</span>
                             <span class="chip-why">себорегуляция + антибактериальное</span>
+                            <span class="chip-products">📦 The Ordinary Niacinamide + Zinc, La Roche-Posay Effaclar Mat</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💎 Сквалан</span>
-                            <span class="chip-why">сигнализирует коже меньше жира</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🍵 Зелёный чай</span>
-                            <span class="chip-why">антиоксидант + матирование</span>
-                        </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🧊 Глина (маски)</span>
                             <span class="chip-why">абсорбирует себум 1-2 раза/нед</span>
+                            <span class="chip-products">📦 L'Oréal Pure Clay, Origins Clear Improvement, Innisfree Volcanic Clay</span>
                         </div>
                     </div>
                 </div>
@@ -946,29 +2207,28 @@
                     </ol>
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуемые ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">🧬 Ниацинамид 2-4%</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧬 Ниацинамид</span>
                             <span class="chip-why">баланс для обеих зон</span>
+                            <span class="chip-products">📦 CeraVe PM, Paula's Choice Niacinamide, The Ordinary Niacinamide</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💧 Гиалуроновая</span>
-                            <span class="chip-why">не забивает, увлажняет везде</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">💧 Гиалуроновая кислота</span>
+                            <span class="chip-why">не забивает поры, увлажняет везде</span>
+                            <span class="chip-products">📦 Neutrogena Hydro Boost Gel-Cream, Hada Labo Gokujyun, Vichy Minéral 89</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💎 Сквалан</span>
-                            <span class="chip-why">универсален для любой зоны</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 BHA точечно</span>
-                            <span class="chip-why">только на Т-зону</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 BHA для Т-зоны</span>
+                            <span class="chip-why">только на жирные участки</span>
+                            <span class="chip-products">📦 Paula's Choice BHA 2%, COSRX BHA (точечно на нос/лоб)</span>
                         </div>
                     </div>
                 </div>
                 <div class="st-section">
                     <strong>💡 Лайфхак:</strong>
-                    <p class="tip-text">Мульти-маскинг: глина на Т-зону + увлажняющая маска на щёки одновременно</p>
+                    <p class="tip-text">Мульти-маскинг: глина (Innisfree, L'Oréal Pure Clay) на Т-зону + увлажняющая (Origins Drink Up) на щёки</p>
                 </div>
             </div>
 
@@ -994,31 +2254,27 @@
                     </ol>
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуемые ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🌿 Центелла (CICA)</span>
-                            <span class="chip-why">мадекассосид, азиатикозид — заживление</span>
+                            <span class="chip-why">заживление, снятие воспалений</span>
+                            <span class="chip-products">📦 Dr. Jart+ Cicapair, COSRX Centella Blemish, La Roche-Posay Cicaplast</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💊 Пантенол 2-5%</span>
-                            <span class="chip-why">провитамин B5 — восстановление</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">💊 Пантенол (B5)</span>
+                            <span class="chip-why">восстановление, снятие раздражения</span>
+                            <span class="chip-products">📦 La Roche-Posay Cicaplast B5, Bepanthen, SVR Cicavit+, Eucerin Aquaphor</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🩹 Аллантоин</span>
-                            <span class="chip-why">смягчение, регенерация</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🌼 Бисаболол</span>
-                            <span class="chip-why">из ромашки — противовоспалительное</span>
-                        </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🛡️ Церамиды</span>
                             <span class="chip-why">восстановление барьера — главное!</span>
+                            <span class="chip-products">📦 CeraVe Moisturizing Cream, La Roche-Posay Toleriane, Dr. Jart+ Ceramidin</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🌾 Овёс (Avena)</span>
                             <span class="chip-why">успокаивает раздражение</span>
+                            <span class="chip-products">📦 Aveeno Skin Relief, A-Derma Exomega, Avène XeraCalm</span>
                         </div>
                     </div>
                 </div>
@@ -1057,27 +2313,32 @@
                     <strong>📋 Причины:</strong> Снижение коллагена (1% в год после 25), замедление обновления клеток, фотостарение
                 </div>
                 <div class="st-section">
-                    <strong>✅ Топ-ингредиенты Anti-Age:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">⚡ Ретинол 0.3-1%</span>
+                    <strong>✅ Рекомендуемые Anti-Age средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">⚡ Ретинол</span>
                             <span class="chip-why">золотой стандарт — стимуляция коллагена</span>
+                            <span class="chip-products">📦 La Roche-Posay Retinol B3, CeraVe Resurfacing, Neutrogena Rapid Wrinkle Repair</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🍊 Витамин C 10-20%</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🍊 Витамин C</span>
                             <span class="chip-why">антиоксидант + осветление пигментации</span>
+                            <span class="chip-products">📦 SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🧬 Пептиды</span>
                             <span class="chip-why">сигналы для выработки коллагена</span>
+                            <span class="chip-products">📦 The Ordinary Buffet, Mizon Peptide 500, NIOD CAIS, Olay Regenerist</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 AHA 5-10%</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 AHA-кислоты</span>
                             <span class="chip-why">ускорение обновления клеток</span>
+                            <span class="chip-products">📦 Pixi Glow Tonic, The Ordinary AHA 30%, Paula's Choice AHA</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">☀️ SPF 30-50</span>
                             <span class="chip-why">80% старения — от солнца!</span>
+                            <span class="chip-products">📦 La Roche-Posay Anthelios, CeraVe AM, Eucerin Sun, Bioderma Photoderm</span>
                         </div>
                     </div>
                 </div>
@@ -1095,27 +2356,27 @@
                     <strong>Проявления:</strong> Комедоны, воспаления, постакне (пятна, рубцы)
                 </div>
                 <div class="st-section">
-                    <strong>✅ Что работает:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 Салициловая 2%</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 Салициловая кислота (BHA)</span>
                             <span class="chip-why">растворяет себум в порах</span>
+                            <span class="chip-products">📦 Paula's Choice BHA 2%, COSRX BHA Power, The Ordinary Salicylic Acid</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">⚡ Бензоилпероксид 2.5%</span>
-                            <span class="chip-why">убивает P. acnes бактерии</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">⚡ Бензоилпероксид (BPO)</span>
+                            <span class="chip-why">убивает бактерии P. acnes</span>
+                            <span class="chip-products">📦 Базирон АС, La Roche-Posay Effaclar Duo+, Clearasil, Acne-Aid</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🧬 Ниацинамид</span>
                             <span class="chip-why">себорегуляция + осветление пятен</span>
+                            <span class="chip-products">📦 The Ordinary Niacinamide 10%, Paula's Choice Niacinamide, CeraVe PM</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">⚡ Ретинол</span>
-                            <span class="chip-why">нормализация кератинизации</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🍵 Азелаиновая 10-20%</span>
-                            <span class="chip-why">противовоспалительное + осветление</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🍵 Азелаиновая кислота</span>
+                            <span class="chip-why">противовоспалительное + осветление постакне</span>
+                            <span class="chip-products">📦 The Ordinary Azelaic Acid 10%, Paula's Choice Azelaic, Skinoren (по рецепту)</span>
                         </div>
                     </div>
                 </div>
@@ -1134,27 +2395,32 @@
                     <strong>Типы:</strong> Постакне пятна, мелазма, веснушки, лентиго
                 </div>
                 <div class="st-section">
-                    <strong>✅ Осветляющие ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">🍊 Витамин C 15-20%</span>
-                            <span class="chip-why">ингибирует тирозиназу</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🍊 Витамин C</span>
+                            <span class="chip-why">ингибирует тирозиназу — главный осветлитель</span>
+                            <span class="chip-products">📦 SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%, Melano CC</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🧬 Ниацинамид 5%</span>
-                            <span class="chip-why">блокирует перенос меланина</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧬 Ниацинамид</span>
+                            <span class="chip-why">блокирует перенос меланина в клетки</span>
+                            <span class="chip-products">📦 The Ordinary Niacinamide 10%, Paula's Choice Niacinamide, CeraVe PM</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🔬 Арбутин</span>
-                            <span class="chip-why">мягкое осветление</span>
+                            <span class="chip-why">мягкое осветление пигментации</span>
+                            <span class="chip-products">📦 The Ordinary Alpha Arbutin 2%, Good Molecules Discoloration Serum</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">⚡ Транексамовая кислота</span>
-                            <span class="chip-why">для мелазмы — топ!</span>
+                            <span class="chip-why">особенно эффективна при мелазме</span>
+                            <span class="chip-products">📦 Paula's Choice Discoloration Repair, The Inkey List Tranexamic Acid</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">☀️ SPF 50 каждый день</span>
                             <span class="chip-why">без этого всё бесполезно!</span>
+                            <span class="chip-products">📦 La Roche-Posay Anthelios, Bioderma Photoderm, Eucerin Sun, Isntree Hyaluronic</span>
                         </div>
                     </div>
                 </div>
@@ -1177,23 +2443,22 @@
                     <strong>Признаки:</strong> Диаметр волоса &lt;0.05 мм, отсутствие объёма, быстро жирнятся у корней
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуется:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">🧬 Кератин гидролизованный</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧬 Кератин</span>
                             <span class="chip-why">укрепляет без утяжеления</span>
+                            <span class="chip-products">📦 Olaplex No. 3, Redken All Soft, L'Oréal Elvive Total Repair</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💊 Биотин (B7)</span>
-                            <span class="chip-why">укрепление фолликулов</span>
-                        </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🌿 Пантенол</span>
                             <span class="chip-why">объём + увлажнение</span>
+                            <span class="chip-products">📦 Biolage VolumeBloom, Kérastase Volumifique, Wella Invigo Volume</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🍚 Рисовый протеин</span>
                             <span class="chip-why">лёгкое укрепление</span>
+                            <span class="chip-products">📦 Briogeo Be Gentle, Giovanni Tea Tree, Aveeno Oat Milk Blend</span>
                         </div>
                     </div>
                 </div>
@@ -1202,7 +2467,7 @@
                     <div class="ing-chips bad">
                         <div class="ing-chip bad">
                             <span class="chip-name">Тяжёлые силиконы</span>
-                            <span class="chip-why">dimethicone — утяжеляют</span>
+                            <span class="chip-why">dimethicone — утяжеляют (ищи в составе!)</span>
                         </div>
                         <div class="ing-chip bad">
                             <span class="chip-name">Масла на корни</span>
@@ -1228,27 +2493,27 @@
                     <strong>📋 Причины:</strong> Окрашивание, термо-укладки, солнце, хлор, неправильный уход
                 </div>
                 <div class="st-section">
-                    <strong>✅ Что нужно:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🧬 Кератин</span>
                             <span class="chip-why">заполняет повреждения кутикулы</span>
+                            <span class="chip-products">📦 Olaplex No. 3, K18 Leave-In, Redken Extreme, L'Oréal Elvive Total Repair</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🥑 Масла (аргана, жожоба)</span>
                             <span class="chip-why">запечатывают влагу</span>
+                            <span class="chip-products">📦 Moroccanoil Treatment, Kérastase Elixir Ultime, Chi Argan Oil</span>
                         </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">💧 Гиалуроновая кислота</span>
                             <span class="chip-why">увлажнение без утяжеления</span>
+                            <span class="chip-products">📦 Garnier Fructis Hydra Bomb, L'Oréal Hyaluron Plump, Revlon Uniq One</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🛡️ Силиконы (маски)</span>
-                            <span class="chip-why">защитная плёнка — использовать 1-2 раза/нед</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 Протеины (гидролизат)</span>
-                            <span class="chip-why">восстановление структуры</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 Протеиновые маски</span>
+                            <span class="chip-why">восстановление структуры (1-2 раза/нед)</span>
+                            <span class="chip-products">📦 Olaplex No. 0 + No. 3, Redken Extreme Mask, Matrix Biolage R.A.W.</span>
                         </div>
                     </div>
                 </div>
@@ -1277,23 +2542,27 @@
                     </ol>
                 </div>
                 <div class="st-section">
-                    <strong>✅ CGM-friendly ингредиенты:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">💧 Глицерин (до 5%)</span>
-                            <span class="chip-why">увлажнение кутикулы</span>
+                    <strong>✅ Рекомендуемые CGM-friendly средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧴 Шампуни без SLS</span>
+                            <span class="chip-why">мягкое очищение без сушки</span>
+                            <span class="chip-products">📦 Shea Moisture, As I Am Coconut CoWash, Cantu Cleansing Cream</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🥥 Кокосовое масло</span>
-                            <span class="chip-why">проникает внутрь волоса</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">💧 Несмываемый уход (Leave-In)</span>
+                            <span class="chip-why">увлажнение + защита</span>
+                            <span class="chip-products">📦 Shea Moisture Leave-In, Kinky-Curly Knot Today, As I Am Leave-In</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🌿 Алоэ вера</span>
-                            <span class="chip-why">увлажнение + фиксация</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🌊 Гели для укладки кудрей</span>
+                            <span class="chip-why">фиксация без склеивания</span>
+                            <span class="chip-products">📦 Eco Styler Gel, LA Looks Gel, Aussie Instant Freeze</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🍯 Мёд</span>
-                            <span class="chip-why">увлажнитель (humectant)</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🥥 Масла для кончиков</span>
+                            <span class="chip-why">запечатывают влагу</span>
+                            <span class="chip-products">📦 Shea Moisture Jamaican Black Castor Oil, Mielle Organics Rosemary</span>
                         </div>
                     </div>
                 </div>
@@ -1325,23 +2594,22 @@
                     <strong>Признаки:</strong> Жирнятся через 12-24 часа, зуд, перхоть (себорея)
                 </div>
                 <div class="st-section">
-                    <strong>✅ Рекомендуется:</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">⚡ Цинк пиритион</span>
-                            <span class="chip-why">против перхоти и себореи</span>
+                    <strong>✅ Рекомендуемые средства:</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">⚡ Шампуни от перхоти/себореи</span>
+                            <span class="chip-why">цинк пиритион, кетоконазол</span>
+                            <span class="chip-products">📦 Head & Shoulders, Низорал (Nizoral), Ducray Kelual DS, Vichy Dercos</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🔬 Салициловая кислота</span>
-                            <span class="chip-why">отшелушивание кожи головы</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🔬 Скрабы/пилинги для кожи головы</span>
+                            <span class="chip-why">отшелушивание, очищение</span>
+                            <span class="chip-products">📦 Christophe Robin Sea Salt, Oribe Serene Scalp, Kérastase Fusio-Scrub</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🍵 Экстракт чайного дерева</span>
-                            <span class="chip-why">антибактериальное</span>
-                        </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🧬 Ниацинамид</span>
-                            <span class="chip-why">контроль себума</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🍵 Шампуни с чайным деревом</span>
+                            <span class="chip-why">антибактериальное, свежесть</span>
+                            <span class="chip-products">📦 Paul Mitchell Tea Tree, The Body Shop Tea Tree, OGX Tea Tree Mint</span>
                         </div>
                     </div>
                 </div>
@@ -1366,23 +2634,22 @@
                     <strong>📋 Причины:</strong> Стресс, дефицит железа/цинка/витаминов, гормоны, генетика (АГА)
                 </div>
                 <div class="st-section">
-                    <strong>✅ Что помогает (при исключении внутренних причин):</strong>
-                    <div class="ing-chips">
-                        <div class="ing-chip">
-                            <span class="chip-name">⚡ Миноксидил 2-5%</span>
-                            <span class="chip-why">стимулирует фолликулы (аптека)</span>
+                    <strong>✅ Рекомендуемые средства (при исключении внутренних причин):</strong>
+                    <div class="ing-chips-products">
+                        <div class="ing-chip-product">
+                            <span class="chip-name">⚡ Миноксидил (аптека)</span>
+                            <span class="chip-why">стимулирует фолликулы — доказано!</span>
+                            <span class="chip-products">📦 Регейн (Regaine), Алерана, Генеролон, Kirkland Minoxidil</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">🧪 Кофеин</span>
-                            <span class="chip-why">продлевает фазу роста</span>
+                        <div class="ing-chip-product">
+                            <span class="chip-name">🧪 Средства с кофеином</span>
+                            <span class="chip-why">продлевает фазу роста волос</span>
+                            <span class="chip-products">📦 Alpecin Caffeine Shampoo, Plantur 39, The Ordinary Multi-Peptide Serum</span>
                         </div>
-                        <div class="ing-chip">
-                            <span class="chip-name">💊 Биотин (внутрь)</span>
-                            <span class="chip-why">если дефицит</span>
-                        </div>
-                        <div class="ing-chip">
+                        <div class="ing-chip-product">
                             <span class="chip-name">🔬 Пептиды для скальпа</span>
-                            <span class="chip-why">стимуляция роста</span>
+                            <span class="chip-why">стимуляция роста и укрепление</span>
+                            <span class="chip-products">📦 The Ordinary Multi-Peptide, Vichy Dercos Aminexil, Kérastase Genesis</span>
                         </div>
                     </div>
                 </div>
@@ -1719,7 +2986,7 @@
 
             <div class="discover-categories">
                 <div class="disc-cat">
-                    <span class="cat-icon">👤</span>
+                    <span class="cat-icon">🧴</span>
                     <div class="cat-text">
                         <strong>Уход за кожей</strong>
                         <span>243 продукта</span>
@@ -1774,7 +3041,7 @@
             <div class="section-title">Мой профиль кожи</div>
             <div class="profile-items">
                 <div class="profile-item">
-                    <span class="item-icon">👤</span>
+                    <span class="item-icon">🧴</span>
                     <div class="item-info">
                         <span class="item-label">Тип кожи</span>
                         <span class="item-value">Сухая</span>
