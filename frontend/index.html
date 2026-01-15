@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1714">
+    <title>Beauty Score — Узнай правду о косметике</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <div class="logo-icon">🔬</div>
+                    <div class="logo-text">Beauty<span>Score</span></div>
+                </div>
+                <button class="header-action" onclick="showScreen('encyclopedia')">📚</button>
+            </div>
+        </header>
+
+        <!-- SCAN SCREEN -->
+        <div class="screen active" id="screen-scan">
+            <div class="scan-hero">
+                <h1>Узнай правду о косметике</h1>
+                <p>Сканируй штрих-код или найди по названию</p>
+            </div>
+
+            <div class="scan-area">
+                <div class="scan-viewfinder"></div>
+                <div class="scan-hint">📷 Наведи камеру на штрих-код</div>
+            </div>
+
+            <div class="scan-actions">
+                <button class="btn btn-primary" onclick="showScreen('result')">🔍 Сканировать</button>
+                <button class="btn btn-secondary" onclick="showScreen('search')">🔎 Поиск</button>
+            </div>
+
+            <div class="recent-scans">
+                <div class="section-title">Недавние сканы</div>
+                <div class="recent-list">
+                    <div class="recent-item" onclick="showScreen('result')">
+                        <div class="recent-score score-excellent">82</div>
+                        <div class="recent-info">
+                            <div class="recent-name">CeraVe Увлажняющий крем</div>
+                            <div class="recent-brand">CeraVe • Уход за кожей</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="recent-item" onclick="showScreen('result-hair')">
+                        <div class="recent-score score-good">71</div>
+                        <div class="recent-info">
+                            <div class="recent-name">Шампунь восстанавливающий</div>
+                            <div class="recent-brand">Natura Siberica • Волосы</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Tips -->
+            <div class="quick-tips">
+                <div class="section-title">💡 Совет дня</div>
+                <div class="tip-card">
+                    <div class="tip-icon">🧪</div>
+                    <div class="tip-content">
+                        <strong>Ретинол + Ниацинамид = ✅</strong>
+                        <p>Можно использовать вместе! Миф о несовместимости устарел.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN (Detailed) -->
+        <div class="screen" id="screen-result">
+            <button class="back-btn" onclick="showScreen('scan')">← Назад</button>
+            
+            <div class="result-header">
+                <div class="result-image">🧴</div>
+                <div class="result-meta">
+                    <h1>CeraVe Увлажняющий крем для лица</h1>
+                    <div class="result-brand">CeraVe • 52 мл • ~890 ₽</div>
+                    <div class="result-tags">
+                        <span class="tag tag-green">Увлажнение</span>
+                        <span class="tag tag-blue">Восстановление барьера</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Card -->
+            <div class="score-card">
+                <div class="score-main">
+                    <div class="score-circle">
+                        <div class="score-number">82</div>
+                        <div class="score-max">/100</div>
+                    </div>
+                    <div class="score-verdict">
+                        <h2>Отличный выбор! 👍</h2>
+                        <p>Подходит для сухой и чувствительной кожи</p>
+                    </div>
+                </div>
+                <div class="score-breakdown">
+                    <div class="score-factor">
+                        <span>Состав</span>
+                        <div class="factor-bar"><div class="factor-fill" style="width:85%"></div></div>
+                        <span>85</span>
+                    </div>
+                    <div class="score-factor">
+                        <span>Эффективность</span>
+                        <div class="factor-bar"><div class="factor-fill" style="width:80%"></div></div>
+                        <span>80</span>
+                    </div>
+                    <div class="score-factor">
+                        <span>Безопасность</span>
+                        <div class="factor-bar"><div class="factor-fill" style="width:90%"></div></div>
+                        <span>90</span>
+                    </div>
+                    <div class="score-factor">
+                        <span>Цена/Качество</span>
+                        <div class="factor-bar"><div class="factor-fill" style="width:75%"></div></div>
+                        <span>75</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How Score is Calculated -->
+            <div class="score-explanation">
+                <div class="section-title">📊 Как рассчитывается оценка?</div>
+                <div class="metric-cards">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🧪</span>
+                            <span class="metric-name">Состав (30%)</span>
+                        </div>
+                        <ul class="metric-details">
+                            <li>✅ Позиция активов в составе (чем выше — тем больше)</li>
+                            <li>✅ Концентрация активных ингредиентов</li>
+                            <li>❌ Наличие потенциальных раздражителей</li>
+                            <li>❌ Количество отдушек и красителей</li>
+                        </ul>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">⚡</span>
+                            <span class="metric-name">Эффективность (30%)</span>
+                        </div>
+                        <ul class="metric-details">
+                            <li>✅ Научные исследования ингредиентов</li>
+                            <li>✅ Концентрация в рабочем диапазоне</li>
+                            <li>✅ Синергия между компонентами</li>
+                            <li>✅ pH продукта (оптимальный для работы)</li>
+                        </ul>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🛡️</span>
+                            <span class="metric-name">Безопасность (25%)</span>
+                        </div>
+                        <ul class="metric-details">
+                            <li>✅ Отсутствие спорных ингредиентов</li>
+                            <li>✅ Низкий риск аллергии</li>
+                            <li>✅ Некомедогенность</li>
+                            <li>✅ Подходит для чувствительной кожи</li>
+                        </ul>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">💰</span>
+                            <span class="metric-name">Цена/Качество (15%)</span>
+                        </div>
+                        <ul class="metric-details">
+                            <li>✅ Стоимость за мл/грамм активов</li>
+                            <li>✅ Сравнение с аналогами</li>
+                            <li>✅ Расход продукта</li>
+                            <li>✅ Доступность в России</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="score-legend">
+                    <div class="legend-item"><span class="legend-color excellent"></span> 85-100: Отлично</div>
+                    <div class="legend-item"><span class="legend-color good"></span> 70-84: Хорошо</div>
+                    <div class="legend-item"><span class="legend-color average"></span> 50-69: Средне</div>
+                    <div class="legend-item"><span class="legend-color poor"></span> 0-49: Плохо</div>
+                </div>
+            </div>
+
+            <!-- Skin Type Match -->
+            <div class="skin-match">
+                <div class="section-title">👤 Подходит для твоего типа кожи</div>
+                <div class="match-grid">
+                    <div class="match-item match-yes">
+                        <span class="match-icon">✅</span>
+                        <span>Сухая кожа</span>
+                    </div>
+                    <div class="match-item match-yes">
+                        <span class="match-icon">✅</span>
+                        <span>Чувствительная</span>
+                    </div>
+                    <div class="match-item match-ok">
+                        <span class="match-icon">👌</span>
+                        <span>Нормальная</span>
+                    </div>
+                    <div class="match-item match-no">
+                        <span class="match-icon">⚠️</span>
+                        <span>Жирная</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="recommendation">
+                <div class="rec-header">
+                    <span class="rec-icon">💡</span>
+                    <span class="rec-title">Персональная рекомендация</span>
+                </div>
+                <p>Идеально для сухой кожи: в составе <strong>церамиды</strong> (восстанавливают барьер), <strong>гиалуроновая кислота</strong> (связывает до 1000x воды) и <strong>ниацинамид</strong> (укрепляет барьер). Используй утром и вечером после очищения.</p>
+            </div>
+
+            <!-- Key Ingredients (Detailed) -->
+            <div class="ingredients-section">
+                <div class="section-title">🧪 Ключевые ингредиенты</div>
+                
+                <div class="ingredient-card" onclick="showIngredientDetail('hyaluronic')">
+                    <div class="ing-header">
+                        <div class="ing-name">
+                            <span class="ing-inci">HYALURONIC ACID</span>
+                            <span class="ing-ru">Гиалуроновая кислота</span>
+                        </div>
+                        <span class="ing-position">4-е место</span>
+                    </div>
+                    <div class="ing-desc">Связывает до 1000x своего веса воды — мощнейшее увлажнение</div>
+                    <div class="ing-details">
+                        <div class="ing-detail">
+                            <span class="detail-label">Концентрация:</span>
+                            <span class="detail-value">0.1-2%</span>
+                        </div>
+                        <div class="ing-detail">
+                            <span class="detail-label">pH работы:</span>
+                            <span class="detail-value">5.0-7.5</span>
+                        </div>
+                        <div class="ing-detail">
+                            <span class="detail-label">Тип:</span>
+                            <span class="detail-value tag-small">Увлажнитель (humectant)</span>
+                        </div>
+                    </div>
+                    <div class="ing-tags">
+                        <span class="tag tag-green">Увлажнение</span>
+                        <span class="tag tag-green">Упругость</span>
+                        <span class="tag tag-blue">Совместим со всем</span>
+                    </div>
+                    <div class="ing-expand">Подробнее →</div>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ing-header">
+                        <div class="ing-name">
+                            <span class="ing-inci">CERAMIDE NP</span>
+                            <span class="ing-ru">Церамид 3</span>
+                        </div>
+                        <span class="ing-position">6-е место</span>
+                    </div>
+                    <div class="ing-desc">Восстанавливает липидный барьер кожи — меньше сухости и раздражений</div>
+                    <div class="ing-details">
+                        <div class="ing-detail">
+                            <span class="detail-label">Функция:</span>
+                            <span class="detail-value">Барьерная защита</span>
+                        </div>
+                        <div class="ing-detail">
+                            <span class="detail-label">Оптимально с:</span>
+                            <span class="detail-value">Холестерол + жирные кислоты (3:1:1)</span>
+                        </div>
+                    </div>
+                    <div class="ing-tags">
+                        <span class="tag tag-green">Барьер</span>
+                        <span class="tag tag-green">Защита</span>
+                        <span class="tag tag-blue">Идентичен коже</span>
+                    </div>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ing-header">
+                        <div class="ing-name">
+                            <span class="ing-inci">NIACINAMIDE</span>
+                            <span class="ing-ru">Ниацинамид (Витамин B3)</span>
+                        </div>
+                        <span class="ing-position">8-е место</span>
+                    </div>
+                    <div class="ing-desc">Универсальный ингредиент: сужает поры, выравнивает тон, контролирует жирность</div>
+                    <div class="ing-details">
+                        <div class="ing-detail">
+                            <span class="detail-label">Концентрация:</span>
+                            <span class="detail-value">2-10%</span>
+                        </div>
+                        <div class="ing-detail">
+                            <span class="detail-label">pH:</span>
+                            <span class="detail-value">5.0-7.0</span>
+                        </div>
+                    </div>
+                    <div class="ing-effects">
+                        <div class="effect-item">
+                            <span class="effect-name">Осветление</span>
+                            <span class="effect-conc">2-5%</span>
+                        </div>
+                        <div class="effect-item">
+                            <span class="effect-name">Себорегуляция</span>
+                            <span class="effect-conc">2%</span>
+                        </div>
+                        <div class="effect-item">
+                            <span class="effect-name">Барьер</span>
+                            <span class="effect-conc">2-4%</span>
+                        </div>
+                    </div>
+                    <div class="ing-tags">
+                        <span class="tag tag-green">Поры</span>
+                        <span class="tag tag-green">Тон</span>
+                        <span class="tag tag-green">Универсальный</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compatibility Matrix with Explanations -->
+            <div class="compatibility-section">
+                <div class="section-title">⚗️ Совместимость с другими средствами</div>
+                <div class="compat-detailed">
+                    <div class="compat-card-full compat-yes">
+                        <div class="compat-header">
+                            <span class="compat-status">✅</span>
+                            <span class="compat-name">Ретинол</span>
+                        </div>
+                        <div class="compat-examples">📦 <em>Это есть в: La Roche-Posay Retinol B3, CeraVe Resurfacing Retinol, The Ordinary Retinol 0.5%</em></div>
+                        <div class="compat-why">
+                            <strong>Почему можно:</strong> Церамиды и ниацинамид смягчают раздражение от ретинола, укрепляя барьер. Гиалуроновая кислота компенсирует сухость.
+                        </div>
+                        <div class="compat-how">💡 <em>Наносить: сначала ретинол, через 20 мин крем</em></div>
+                    </div>
+                    
+                    <div class="compat-card-full compat-yes">
+                        <div class="compat-header">
+                            <span class="compat-status">✅</span>
+                            <span class="compat-name">Витамин C (сыворотки с аскорбинкой)</span>
+                        </div>
+                        <div class="compat-examples">📦 <em>Это есть в: The Ordinary Vitamin C 23%, SkinCeuticals CE Ferulic, Timeless Vitamin C, Librederm Vitamin C</em></div>
+                        <div class="compat-why">
+                            <strong>Почему отлично:</strong> Витамин C работает на pH 2.5-3.5, а церамиды стабильны при любом pH. Ниацинамид при низком pH может вызвать покраснение — подождать 15-20 мин.
+                        </div>
+                        <div class="compat-how">💡 <em>Утром: Vit C → подождать → крем → SPF</em></div>
+                    </div>
+                    
+                    <div class="compat-card-full compat-warn">
+                        <div class="compat-header">
+                            <span class="compat-status">⚠️</span>
+                            <span class="compat-name">AHA/BHA кислоты (пилинги, тоники)</span>
+                        </div>
+                        <div class="compat-examples">📦 <em>Это есть в: The Ordinary AHA 30%, Paula's Choice BHA, COSRX BHA, Pixi Glow Tonic, пилинги Holy Land</em></div>
+                        <div class="compat-why">
+                            <strong>Почему осторожно:</strong> Кислоты pH 3-4 разрушают липидный барьер. После пилинга подождать 30 мин — иначе ниацинамид может вызвать покалывание и покраснение.
+                        </div>
+                        <div class="compat-how">💡 <em>Лучше: кислоты вечером, крем через 30 мин или утром</em></div>
+                    </div>
+                    
+                    <div class="compat-card-full compat-yes">
+                        <div class="compat-header">
+                            <span class="compat-status">✅</span>
+                            <span class="compat-name">Пептиды (антивозрастные сыворотки)</span>
+                        </div>
+                        <div class="compat-examples">📦 <em>Это есть в: The Ordinary Buffet, Mizon Peptide, NIOD CAIS, сыворотки с "peptide" в названии</em></div>
+                        <div class="compat-why">
+                            <strong>Почему синергия:</strong> Пептиды + ниацинамид = двойной удар по старению. Церамиды не мешают пептидам проникать в кожу.
+                        </div>
+                        <div class="compat-how">💡 <em>Сыворотка с пептидами → крем сразу</em></div>
+                    </div>
+                    
+                    <div class="compat-card-full compat-no">
+                        <div class="compat-header">
+                            <span class="compat-status">❌</span>
+                            <span class="compat-name">Бензоилпероксид (средства от прыщей)</span>
+                        </div>
+                        <div class="compat-examples">📦 <em>Это есть в: Базирон АС, La Roche-Posay Effaclar Duo+, Acne-Aid, Clearasil, средства с "benzoyl peroxide"</em></div>
+                        <div class="compat-why">
+                            <strong>Почему нельзя:</strong> BPO — сильный окислитель, разрушает ниацинамид и повышает раздражение. Это популярный ингредиент в средствах от акне!
+                        </div>
+                        <div class="compat-how">💡 <em>BPO точечно на прыщи утром, крем вечером</em></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Use -->
+            <div class="usage-section">
+                <div class="section-title">📋 Как использовать</div>
+                <div class="usage-steps">
+                    <div class="usage-step">
+                        <span class="step-num">1</span>
+                        <div class="step-content">
+                            <strong>Очищение</strong>
+                            <p>После умывания, на влажную кожу</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <span class="step-num">2</span>
+                        <div class="step-content">
+                            <strong>Нанесение</strong>
+                            <p>Небольшое количество, распределить по лицу</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <span class="step-num">3</span>
+                        <div class="step-content">
+                            <strong>Утром</strong>
+                            <p>Перед SPF (обязательно!)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternatives -->
+            <div class="alternatives-section">
+                <div class="section-title">🔄 Альтернативы</div>
+                <div class="alternatives-grid">
+                    <div class="alt-card">
+                        <div class="alt-score score-excellent">85</div>
+                        <div class="alt-info">
+                            <div class="alt-name">La Roche-Posay Toleriane</div>
+                            <div class="alt-price">~1200 ₽</div>
+                        </div>
+                    </div>
+                    <div class="alt-card">
+                        <div class="alt-score score-good">78</div>
+                        <div class="alt-info">
+                            <div class="alt-name">Librederm Гиалуроновый</div>
+                            <div class="alt-price">~650 ₽</div>
+                            <span class="alt-badge">💰 Дешевле</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-action">
+                <button class="btn btn-primary">📥 Добавить в мою полку</button>
+            </div>
+        </div>
+
+        <!-- ENCYCLOPEDIA SCREEN -->
+        <div class="screen" id="screen-encyclopedia">
+            <button class="back-btn" onclick="showScreen('scan')">← Назад</button>
+            
+            <div class="enc-header">
+                <h1>📚 Энциклопедия</h1>
+                <p>Всё о косметике простым языком</p>
+            </div>
+
+            <div class="enc-search">
+                <input type="text" placeholder="🔍 Найти ингредиент..." class="search-input">
+            </div>
+
+            <div class="enc-categories">
+                <div class="section-title">Категории</div>
+                
+                <div class="enc-cat" onclick="showScreen('enc-ingredients')">
+                    <span class="cat-icon">🧪</span>
+                    <div class="cat-info">
+                        <strong>Ингредиенты</strong>
+                        <p>Ретинол, Витамин C, Кислоты и др.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="enc-cat" onclick="showScreen('enc-skin')">
+                    <span class="cat-icon">👤</span>
+                    <div class="cat-info">
+                        <strong>Типы кожи</strong>
+                        <p>Сухая, жирная, чувствительная</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="enc-cat" onclick="showScreen('enc-hair')">
+                    <span class="cat-icon">💇</span>
+                    <div class="cat-info">
+                        <strong>Типы волос</strong>
+                        <p>Прямые, кудрявые, повреждённые</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="enc-cat" onclick="showScreen('enc-compat')">
+                    <span class="cat-icon">⚗️</span>
+                    <div class="cat-info">
+                        <strong>Совместимость</strong>
+                        <p>Что можно и нельзя смешивать</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="enc-cat" onclick="showScreen('enc-skin')">
+                    <span class="cat-icon">🩺</span>
+                    <div class="cat-info">
+                        <strong>Проблемы кожи</strong>
+                        <p>Акне, пигментация, старение</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+
+            <!-- Popular Ingredients with descriptions -->
+            <div class="enc-popular">
+                <div class="section-title">🔥 Популярные ингредиенты</div>
+                <div class="ing-list-detailed">
+                    <div class="ing-list-item-expanded" onclick="showScreen('ing-retinol')">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">⚡</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Ретинол</span>
+                                <span class="ing-list-desc">Anti-age №1: обновление клеток, коллаген, от морщин</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 La Roche-Posay Retinol B3, CeraVe Resurfacing, The Ordinary Retinol 0.5%, Neutrogena Rapid Wrinkle</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🍊</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Витамин C</span>
+                                <span class="ing-list-desc">Антиоксидант: осветление, сияние, защита от свободных радикалов</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%, Librederm Vit C</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">💧</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Гиалуроновая кислота</span>
+                                <span class="ing-list-desc">Супер-увлажнение: связывает до 1000x воды</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 The Ordinary Hyaluronic, Hada Labo Gokujyun, Vichy Minéral 89, Neutrogena Hydro Boost</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🧬</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Ниацинамид (B3)</span>
+                                <span class="ing-list-desc">Универсал: поры, тон, себорегуляция, барьер</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 The Ordinary Niacinamide 10%, CeraVe PM, Paula's Choice Niacinamide, Glossier Super Pure</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🔬</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">AHA/BHA кислоты</span>
+                                <span class="ing-list-desc">Эксфолиация: обновление, чистые поры, гладкость</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 AHA: The Ordinary 30%, Pixi Glow Tonic | BHA: Paula's Choice, COSRX BHA</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🛡️</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Церамиды</span>
+                                <span class="ing-list-desc">Барьер кожи: защита, удержание влаги, от сухости</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 CeraVe (вся линейка!), Dr. Jart+ Ceramidin, Paula's Choice Barrier Repair</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🧬</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Пептиды</span>
+                                <span class="ing-list-desc">Anti-age: сигналы для выработки коллагена, упругость</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 The Ordinary Buffet, Mizon Peptide, NIOD CAIS, сыворотки с "peptide"</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">💥</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Бензоилпероксид (BPO)</span>
+                                <span class="ing-list-desc">От акне: убивает бактерии P. acnes, очищает поры</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 Базирон АС, La Roche-Posay Effaclar Duo+, Clearasil, Acne-Aid</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">🌿</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Центелла азиатская</span>
+                                <span class="ing-list-desc">Успокаивает: заживление, чувствительная кожа</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 Dr. Jart+ Cicapair, COSRX Centella, La Roche-Posay Cicaplast, Purito Centella</div>
+                    </div>
+                    <div class="ing-list-item-expanded">
+                        <div class="ing-list-main">
+                            <span class="ing-list-icon">💎</span>
+                            <div class="ing-list-info">
+                                <span class="ing-list-name">Сквалан</span>
+                                <span class="ing-list-desc">Эмолент: увлажнение без жирности, для всех типов кожи</span>
+                            </div>
+                            <span class="arrow">→</span>
+                        </div>
+                        <div class="ing-list-products">📦 The Ordinary Squalane, Biossance, Paula's Choice Moisture Boost, Timeless Squalane</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Glossary Section -->
+            <div class="glossary-section">
+                <div class="section-title">📖 Словарь терминов</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <span class="glossary-term">SPF</span>
+                        <span class="glossary-def">Sun Protection Factor — защита от солнца</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">AHA</span>
+                        <span class="glossary-def">Альфа-кислоты — отшелушивание поверхности</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">BHA</span>
+                        <span class="glossary-def">Бета-кислоты — очищение пор изнутри</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">ПАВ / SLS</span>
+                        <span class="glossary-def">Поверхностно-активные вещества — пенятся, очищают</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">pH</span>
+                        <span class="glossary-def">Кислотность: норма кожи 4.5-5.5</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">INCI</span>
+                        <span class="glossary-def">Международные названия ингредиентов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INGREDIENT DETAIL: RETINOL -->
+        <div class="screen" id="screen-ing-retinol">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <div class="ing-detail-header">
+                <div class="ing-detail-icon">⚡</div>
+                <div class="ing-detail-title">
+                    <h1>Ретинол</h1>
+                    <span class="ing-detail-inci">Retinol, Retinal, Tretinoin</span>
+                </div>
+            </div>
+
+            <div class="ing-summary">
+                <p>Золотой стандарт anti-age. Ускоряет обновление клеток, стимулирует коллаген, борется с пигментацией.</p>
+            </div>
+
+            <!-- Retinoid Forms -->
+            <div class="retinoid-forms">
+                <div class="section-title">📊 Формы ретиноидов (по силе)</div>
+                <div class="form-table">
+                    <div class="form-row form-header">
+                        <span>Форма</span>
+                        <span>Сила</span>
+                        <span>Раздражение</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Третиноин (рецепт)</span>
+                        <span class="strength">100%</span>
+                        <span class="irritation high">Высокое</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Ретинальдегид</span>
+                        <span class="strength">50%</span>
+                        <span class="irritation med">Среднее</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Ретинол</span>
+                        <span class="strength">10-20%</span>
+                        <span class="irritation med">Среднее</span>
+                    </div>
+                    <div class="form-row">
+                        <span>Ретинил пальмитат</span>
+                        <span class="strength">1%</span>
+                        <span class="irritation low">Низкое</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Start -->
+            <div class="howto-section">
+                <div class="section-title">🚀 Как начать использовать</div>
+                <div class="howto-steps">
+                    <div class="howto-step">
+                        <div class="howto-phase">Фаза 1</div>
+                        <div class="howto-content">
+                            <strong>0.25-0.3% ретинол</strong>
+                            <p>2 раза в неделю, 2-4 недели</p>
+                        </div>
+                    </div>
+                    <div class="howto-step">
+                        <div class="howto-phase">Фаза 2</div>
+                        <div class="howto-content">
+                            <strong>0.5% ретинол</strong>
+                            <p>Через день, 4-6 недель</p>
+                        </div>
+                    </div>
+                    <div class="howto-step">
+                        <div class="howto-phase">Фаза 3</div>
+                        <div class="howto-content">
+                            <strong>1%+ ретинол</strong>
+                            <p>Ежедневно (если кожа адаптировалась)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compatibility -->
+            <div class="ing-compat">
+                <div class="section-title">⚗️ Совместимость</div>
+                <div class="compat-list">
+                    <div class="compat-row compat-yes">
+                        <span class="compat-icon">✅</span>
+                        <span>Ниацинамид</span>
+                        <span class="compat-tip">Отличная пара!</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>Витамин C</span>
+                        <span class="compat-tip">Разделить утро/вечер</span>
+                    </div>
+                    <div class="compat-row compat-warn">
+                        <span class="compat-icon">⚠️</span>
+                        <span>AHA/BHA</span>
+                        <span class="compat-tip">Чередовать дни</span>
+                    </div>
+                    <div class="compat-row compat-no">
+                        <span class="compat-icon">❌</span>
+                        <span>Бензоилпероксид</span>
+                        <span class="compat-tip">Инактивирует ретинол</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warnings -->
+            <div class="warnings-section">
+                <div class="section-title">⚠️ Важно знать</div>
+                <div class="warning-card">
+                    <p>🚫 <strong>Противопоказания:</strong> беременность, лактация, острые воспаления</p>
+                    <p>☀️ <strong>Обязательно:</strong> SPF 30+ каждый день (ретинол повышает фоточувствительность)</p>
+                    <p>🌙 <strong>Использовать:</strong> только вечером</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKIN TYPES SCREEN -->
+        <div class="screen" id="screen-enc-skin">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <h1 class="page-title">👤 Типы кожи</h1>
+            <p class="page-subtitle">Выбери свой тип для персональных рекомендаций</p>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">🏜️</span>
+                    <h2>Сухая кожа</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Стянутость, шелушение, тусклость, тонкие поры, ощущение "пергамента"
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Недостаток липидов и NMF (натурального увлажняющего фактора), нарушение барьера, генетика
+                </div>
+                <div class="st-routine">
+                    <strong>🌟 Базовая рутина:</strong>
+                    <ol>
+                        <li>Мягкое очищение (молочко/гидрофильное масло)</li>
+                        <li>Тоник без спирта</li>
+                        <li>Сыворотка с гиалуроновой кислотой</li>
+                        <li>Крем с церамидами</li>
+                        <li>Масло или бальзам поверх (вечером)</li>
+                    </ol>
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуемые ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🛡️ Церамиды</span>
+                            <span class="chip-why">восстанавливают барьер — ключевой ингредиент!</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💎 Сквалан</span>
+                            <span class="chip-why">идентичен кожному себуму</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💧 Гиалуроновая</span>
+                            <span class="chip-why">притягивает до 1000x воды</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧈 Масло ши</span>
+                            <span class="chip-why">питание, защита от ТЭПВ</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💦 Глицерин 5-10%</span>
+                            <span class="chip-why">базовый увлажнитель</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Мочевина 5-10%</span>
+                            <span class="chip-why">NMF + мягкая эксфолиация</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🌿 Пантенол</span>
+                            <span class="chip-why">заживление, смягчение</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>❌ Избегать:</strong>
+                    <div class="ing-chips bad">
+                        <div class="ing-chip bad">
+                            <span class="chip-name">SLS/SLES</span>
+                            <span class="chip-why">агрессивные ПАВы — разрушают барьер</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">AHA/BHA >10%</span>
+                            <span class="chip-why">пересушивают и раздражают</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Alcohol Denat</span>
+                            <span class="chip-why">испаряет влагу</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Ретинол сразу</span>
+                            <span class="chip-why">начинать с 0.1%, постепенно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">✨</span>
+                    <h2>Жирная кожа</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Блеск через 1-2 часа, расширенные поры, склонность к акне и чёрным точкам
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Гиперактивность сальных желёз, гормоны, генетика, неправильный уход (слишком агрессивный!)
+                </div>
+                <div class="st-routine">
+                    <strong>🌟 Базовая рутина:</strong>
+                    <ol>
+                        <li>Гель/пенка для умывания (мягкий pH)</li>
+                        <li>Тоник с BHA или ниацинамидом</li>
+                        <li>Лёгкая сыворотка</li>
+                        <li>Гелевый/лёгкий крем (да, увлажнение нужно!)</li>
+                        <li>SPF матирующий</li>
+                    </ol>
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуемые ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Ниацинамид 2-5%</span>
+                            <span class="chip-why">контроль себума за 4-6 недель</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Салициловая 0.5-2%</span>
+                            <span class="chip-why">очищает поры изнутри</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Цинк PCA</span>
+                            <span class="chip-why">себорегуляция + антибактериальное</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💎 Сквалан</span>
+                            <span class="chip-why">сигнализирует коже меньше жира</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍵 Зелёный чай</span>
+                            <span class="chip-why">антиоксидант + матирование</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧊 Глина (маски)</span>
+                            <span class="chip-why">абсорбирует себум 1-2 раза/нед</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>❌ Избегать:</strong>
+                    <div class="ing-chips bad">
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Кокосовое масло</span>
+                            <span class="chip-why">комедогенность 4/5 — забивает поры</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Тяжёлые масла</span>
+                            <span class="chip-why">минеральное, ланолин</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Агрессивное мытьё</span>
+                            <span class="chip-why">кожа компенсирует ещё бóльшим жиром</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Спирт в больших %</span>
+                            <span class="chip-why">сушит → реактивная жирность</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">⚖️</span>
+                    <h2>Комбинированная кожа</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Жирная Т-зона (лоб, нос, подбородок), сухие/нормальные щёки
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Разная активность сальных желёз на разных участках — это норма для ~60% людей
+                </div>
+                <div class="st-routine">
+                    <strong>🌟 Базовая рутина:</strong>
+                    <ol>
+                        <li>Мягкий гель для умывания</li>
+                        <li>BHA-тоник только на Т-зону</li>
+                        <li>Лёгкая сыворотка (ниацинамид)</li>
+                        <li>Лёгкий крем на Т-зону, питательный на щёки</li>
+                        <li>Или: один универсальный лосьон</li>
+                    </ol>
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуемые ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Ниацинамид 2-4%</span>
+                            <span class="chip-why">баланс для обеих зон</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💧 Гиалуроновая</span>
+                            <span class="chip-why">не забивает, увлажняет везде</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💎 Сквалан</span>
+                            <span class="chip-why">универсален для любой зоны</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 BHA точечно</span>
+                            <span class="chip-why">только на Т-зону</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>💡 Лайфхак:</strong>
+                    <p class="tip-text">Мульти-маскинг: глина на Т-зону + увлажняющая маска на щёки одновременно</p>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">🌸</span>
+                    <h2>Чувствительная кожа</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Покраснения, зуд, жжение, реактивность на новые продукты, видимые капилляры
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Нарушенный барьер, розацеа, аллергии, генетика, over-exfoliation
+                </div>
+                <div class="st-routine">
+                    <strong>🌟 Базовая рутина:</strong>
+                    <ol>
+                        <li>Мицеллярка/молочко (без смывания или с мягким)</li>
+                        <li>Успокаивающий тоник без спирта</li>
+                        <li>Минимум средств — 2-3 шага максимум</li>
+                        <li>Барьерный крем с церамидами</li>
+                        <li>Физический SPF (без хим. фильтров)</li>
+                    </ol>
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуемые ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🌿 Центелла (CICA)</span>
+                            <span class="chip-why">мадекассосид, азиатикозид — заживление</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💊 Пантенол 2-5%</span>
+                            <span class="chip-why">провитамин B5 — восстановление</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🩹 Аллантоин</span>
+                            <span class="chip-why">смягчение, регенерация</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🌼 Бисаболол</span>
+                            <span class="chip-why">из ромашки — противовоспалительное</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🛡️ Церамиды</span>
+                            <span class="chip-why">восстановление барьера — главное!</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🌾 Овёс (Avena)</span>
+                            <span class="chip-why">успокаивает раздражение</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>❌ Категорически избегать:</strong>
+                    <div class="ing-chips bad">
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Parfum / Fragrance</span>
+                            <span class="chip-why">аллерген №1 — даже "натуральные"</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Эфирные масла</span>
+                            <span class="chip-why">лаванда, цитрусовые — раздражают</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">AHA/BHA сразу</span>
+                            <span class="chip-why">начинать с PHA (полигидрокси)</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Ментол, камфора</span>
+                            <span class="chip-why">"охлаждающие" = раздражающие</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">👵</span>
+                    <h2>Зрелая кожа (anti-age)</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Морщины, потеря упругости, пигментация, сухость, истончение
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Снижение коллагена (1% в год после 25), замедление обновления клеток, фотостарение
+                </div>
+                <div class="st-section">
+                    <strong>✅ Топ-ингредиенты Anti-Age:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Ретинол 0.3-1%</span>
+                            <span class="chip-why">золотой стандарт — стимуляция коллагена</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍊 Витамин C 10-20%</span>
+                            <span class="chip-why">антиоксидант + осветление пигментации</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Пептиды</span>
+                            <span class="chip-why">сигналы для выработки коллагена</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 AHA 5-10%</span>
+                            <span class="chip-why">ускорение обновления клеток</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">☀️ SPF 30-50</span>
+                            <span class="chip-why">80% старения — от солнца!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skin Problems Section -->
+            <h2 class="section-divider">🩺 Проблемы кожи</h2>
+
+            <div class="skin-type-card problem-card">
+                <div class="st-header">
+                    <span class="st-icon">🔴</span>
+                    <h2>Акне</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Проявления:</strong> Комедоны, воспаления, постакне (пятна, рубцы)
+                </div>
+                <div class="st-section">
+                    <strong>✅ Что работает:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Салициловая 2%</span>
+                            <span class="chip-why">растворяет себум в порах</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Бензоилпероксид 2.5%</span>
+                            <span class="chip-why">убивает P. acnes бактерии</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Ниацинамид</span>
+                            <span class="chip-why">себорегуляция + осветление пятен</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Ретинол</span>
+                            <span class="chip-why">нормализация кератинизации</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍵 Азелаиновая 10-20%</span>
+                            <span class="chip-why">противовоспалительное + осветление</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>⚠️ Важно:</strong>
+                    <p class="tip-text">Не выдавливать! BPO + ретинол = в разное время. При тяжёлом акне — к дерматологу.</p>
+                </div>
+            </div>
+
+            <div class="skin-type-card problem-card">
+                <div class="st-header">
+                    <span class="st-icon">🟤</span>
+                    <h2>Пигментация</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Типы:</strong> Постакне пятна, мелазма, веснушки, лентиго
+                </div>
+                <div class="st-section">
+                    <strong>✅ Осветляющие ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🍊 Витамин C 15-20%</span>
+                            <span class="chip-why">ингибирует тирозиназу</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Ниацинамид 5%</span>
+                            <span class="chip-why">блокирует перенос меланина</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Арбутин</span>
+                            <span class="chip-why">мягкое осветление</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Транексамовая кислота</span>
+                            <span class="chip-why">для мелазмы — топ!</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">☀️ SPF 50 каждый день</span>
+                            <span class="chip-why">без этого всё бесполезно!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HAIR TYPES SCREEN -->
+        <div class="screen" id="screen-enc-hair">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <h1 class="page-title">💇 Типы волос</h1>
+            <p class="page-subtitle">Подбери уход для своих волос</p>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">🧵</span>
+                    <h2>Тонкие волосы</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Диаметр волоса &lt;0.05 мм, отсутствие объёма, быстро жирнятся у корней
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуется:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Кератин гидролизованный</span>
+                            <span class="chip-why">укрепляет без утяжеления</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💊 Биотин (B7)</span>
+                            <span class="chip-why">укрепление фолликулов</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🌿 Пантенол</span>
+                            <span class="chip-why">объём + увлажнение</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍚 Рисовый протеин</span>
+                            <span class="chip-why">лёгкое укрепление</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>❌ Избегать:</strong>
+                    <div class="ing-chips bad">
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Тяжёлые силиконы</span>
+                            <span class="chip-why">dimethicone — утяжеляют</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Масла на корни</span>
+                            <span class="chip-why">жирнят, лишают объёма</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Густые бальзамы</span>
+                            <span class="chip-why">наносить только на длину!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">🏜️</span>
+                    <h2>Сухие и повреждённые</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Ломкость, секущиеся концы, пористость, тусклость, "солома"
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Окрашивание, термо-укладки, солнце, хлор, неправильный уход
+                </div>
+                <div class="st-section">
+                    <strong>✅ Что нужно:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Кератин</span>
+                            <span class="chip-why">заполняет повреждения кутикулы</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🥑 Масла (аргана, жожоба)</span>
+                            <span class="chip-why">запечатывают влагу</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💧 Гиалуроновая кислота</span>
+                            <span class="chip-why">увлажнение без утяжеления</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🛡️ Силиконы (маски)</span>
+                            <span class="chip-why">защитная плёнка — использовать 1-2 раза/нед</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Протеины (гидролизат)</span>
+                            <span class="chip-why">восстановление структуры</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>⚠️ Важно:</strong>
+                    <p class="tip-text">Протеиновый перегруз: если волосы стали жёсткими — перейти на увлажнение без протеинов на 2-3 недели</p>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">🌀</span>
+                    <h2>Кудрявые волосы (CGM)</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Особенности:</strong> Пористые, склонны к сухости, требуют особого ухода (Curly Girl Method)
+                </div>
+                <div class="st-routine">
+                    <strong>🌟 CGM рутина:</strong>
+                    <ol>
+                        <li>Ко-вошинг (бальзамом) или мягкий шампунь без SLS</li>
+                        <li>Кондиционер — много, не смывать полностью</li>
+                        <li>Несмываемый уход (leave-in)</li>
+                        <li>Стайлинг (гель/мусс для кудрей)</li>
+                        <li>Сушка диффузором или естественная</li>
+                    </ol>
+                </div>
+                <div class="st-section">
+                    <strong>✅ CGM-friendly ингредиенты:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">💧 Глицерин (до 5%)</span>
+                            <span class="chip-why">увлажнение кутикулы</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🥥 Кокосовое масло</span>
+                            <span class="chip-why">проникает внутрь волоса</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🌿 Алоэ вера</span>
+                            <span class="chip-why">увлажнение + фиксация</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍯 Мёд</span>
+                            <span class="chip-why">увлажнитель (humectant)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>❌ CGM запрещено:</strong>
+                    <div class="ing-chips bad">
+                        <div class="ing-chip bad">
+                            <span class="chip-name">SLS / SLES</span>
+                            <span class="chip-why">сушат кутикулу</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Нерастворимые силиконы</span>
+                            <span class="chip-why">dimethicone — накапливаются</span>
+                        </div>
+                        <div class="ing-chip bad">
+                            <span class="chip-name">Парабены (для строгого CGM)</span>
+                            <span class="chip-why">спорный пункт</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skin-type-card">
+                <div class="st-header">
+                    <span class="st-icon">✨</span>
+                    <h2>Жирные волосы / кожа головы</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Признаки:</strong> Жирнятся через 12-24 часа, зуд, перхоть (себорея)
+                </div>
+                <div class="st-section">
+                    <strong>✅ Рекомендуется:</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Цинк пиритион</span>
+                            <span class="chip-why">против перхоти и себореи</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Салициловая кислота</span>
+                            <span class="chip-why">отшелушивание кожи головы</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🍵 Экстракт чайного дерева</span>
+                            <span class="chip-why">антибактериальное</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧬 Ниацинамид</span>
+                            <span class="chip-why">контроль себума</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>💡 Лайфхак:</strong>
+                    <p class="tip-text">Не мыть чаще! Чем чаще моете — тем больше жира выделяется. Переучивать кожу головы постепенно.</p>
+                </div>
+            </div>
+
+            <!-- Hair Problems -->
+            <h2 class="section-divider">🩺 Проблемы волос</h2>
+
+            <div class="skin-type-card problem-card">
+                <div class="st-header">
+                    <span class="st-icon">📉</span>
+                    <h2>Выпадение волос</h2>
+                </div>
+                <div class="st-signs">
+                    <strong>Норма:</strong> 50-100 волос/день. Больше — повод разобраться
+                </div>
+                <div class="st-causes">
+                    <strong>📋 Причины:</strong> Стресс, дефицит железа/цинка/витаминов, гормоны, генетика (АГА)
+                </div>
+                <div class="st-section">
+                    <strong>✅ Что помогает (при исключении внутренних причин):</strong>
+                    <div class="ing-chips">
+                        <div class="ing-chip">
+                            <span class="chip-name">⚡ Миноксидил 2-5%</span>
+                            <span class="chip-why">стимулирует фолликулы (аптека)</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🧪 Кофеин</span>
+                            <span class="chip-why">продлевает фазу роста</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">💊 Биотин (внутрь)</span>
+                            <span class="chip-why">если дефицит</span>
+                        </div>
+                        <div class="ing-chip">
+                            <span class="chip-name">🔬 Пептиды для скальпа</span>
+                            <span class="chip-why">стимуляция роста</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="st-section">
+                    <strong>⚠️ Важно:</strong>
+                    <p class="tip-text">Сначала — к трихологу / эндокринологу. Проверить: железо, ферритин, ТТГ, витамин D</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPATIBILITY SCREEN -->
+        <div class="screen" id="screen-enc-compat">
+            <button class="back-btn" onclick="showScreen('encyclopedia')">← Назад</button>
+            
+            <h1 class="page-title">⚗️ Совместимость ингредиентов</h1>
+            <p class="page-subtitle">Что можно смешивать, а что — категорически нет</p>
+
+            <!-- Compatibility Matrix -->
+            <div class="compat-matrix">
+                <div class="section-title">📊 Матрица совместимости</div>
+                <div class="matrix-table">
+                    <div class="matrix-header">
+                        <span></span>
+                        <span>Retinol</span>
+                        <span>Vit C</span>
+                        <span>AHA</span>
+                        <span>BHA</span>
+                        <span>Niacin</span>
+                        <span>BPO</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>Retinol</span>
+                        <span class="cell-self">—</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-no">❌</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>Vit C</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-self">—</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-no">❌</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>AHA</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-self">—</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-warn">⚠️</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>BHA</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-self">—</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-warn">⚠️</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>Niacin</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-self">—</span>
+                        <span class="cell-yes">✅</span>
+                    </div>
+                    <div class="matrix-row">
+                        <span>BPO</span>
+                        <span class="cell-no">❌</span>
+                        <span class="cell-no">❌</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-warn">⚠️</span>
+                        <span class="cell-yes">✅</span>
+                        <span class="cell-self">—</span>
+                    </div>
+                </div>
+                <div class="matrix-legend">
+                    <span>✅ Можно вместе</span>
+                    <span>⚠️ Осторожно / разделить</span>
+                    <span>❌ Нельзя</span>
+                </div>
+            </div>
+
+            <!-- Detailed Explanations -->
+            <div class="compat-explanations">
+                <div class="section-title">📖 Подробные объяснения</div>
+
+                <div class="compat-explain-card good">
+                    <div class="explain-header">
+                        <span class="status">✅</span>
+                        <h3>Ретинол + Ниацинамид</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 Ретинол: La Roche-Posay Retinol B3, CeraVe Resurfacing, The Ordinary Retinol</span>
+                        <span>📦 Ниацинамид: The Ordinary Niacinamide 10%, CeraVe PM, La Roche-Posay Toleriane</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему можно:</strong> Миф о несовместимости устарел. Современные исследования показывают, что ниацинамид смягчает раздражение от ретинола и укрепляет барьер.</p>
+                        <p><strong>Как использовать:</strong> Вместе в одной рутине. Сначала ретинол, затем увлажняющее с ниацинамидом.</p>
+                        <div class="explain-result">💡 Результат: Anti-age + укрепление барьера + контроль пигментации</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card warning">
+                    <div class="explain-header">
+                        <span class="status">⚠️</span>
+                        <h3>Ретинол + Витамин C</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 Ретинол: La Roche-Posay Retinol B3, Neutrogena Rapid Wrinkle Repair</span>
+                        <span>📦 Витамин C: SkinCeuticals CE Ferulic, Timeless Vit C, The Ordinary Vit C 23%</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему осторожно:</strong> Разный pH для работы (Vit C: 2.5-3.5, Ретинол: 5.5-6). Вместе могут раздражать, снижать эффективность друг друга.</p>
+                        <p><strong>Как использовать:</strong> Разделить по времени: Vit C утром (+ SPF!), ретинол вечером.</p>
+                        <div class="explain-result">💡 Результат: Оба работают на максимум, нет раздражения</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card warning">
+                    <div class="explain-header">
+                        <span class="status">⚠️</span>
+                        <h3>Ретинол + AHA/BHA</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 AHA (гликолевая, молочная): The Ordinary AHA 30%, Pixi Glow Tonic, пилинги Holy Land</span>
+                        <span>📦 BHA (салициловая): Paula's Choice BHA, COSRX BHA, средства для проблемной кожи</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему осторожно:</strong> Двойная эксфолиация = раздражение, повреждение барьера, сухость, покраснение.</p>
+                        <p><strong>Как использовать:</strong> Чередовать дни. Или: кислоты 2 раза/нед, ретинол в остальные дни.</p>
+                        <div class="explain-result">💡 Результат: Обновление без передозировки</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card bad">
+                    <div class="explain-header">
+                        <span class="status">❌</span>
+                        <h3>Ретинол + Бензоилпероксид (BPO)</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 BPO средства: Базирон АС, La Roche-Posay Effaclar Duo+, Clearasil, Acne-Aid</span>
+                        <span>💡 BPO часто в средствах от прыщей с надписью "benzoyl peroxide" в составе</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему нельзя:</strong> BPO — сильный окислитель, буквально разрушает молекулу ретинола, делая его бесполезным.</p>
+                        <p><strong>Как использовать:</strong> Строго в разное время суток: BPO утром точечно, ретинол вечером. Или в разные дни.</p>
+                        <div class="explain-result">⚠️ Важно: Даже ждать 30 мин между ними — недостаточно!</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card bad">
+                    <div class="explain-header">
+                        <span class="status">❌</span>
+                        <h3>Витамин C + Бензоилпероксид (BPO)</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 Витамин C: SkinCeuticals CE Ferulic, The Ordinary Vit C, Timeless Vit C, Librederm</span>
+                        <span>📦 BPO: Базирон АС, Effaclar Duo+, любые средства с "benzoyl peroxide"</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему нельзя:</strong> BPO окисляет витамин C, превращая его в неактивную форму. Деньги на ветер.</p>
+                        <p><strong>Как использовать:</strong> В разное время суток или разные дни.</p>
+                        <div class="explain-result">⚠️ Признак окисления Vit C: сыворотка стала жёлто-коричневой</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card good">
+                    <div class="explain-header">
+                        <span class="status">✅</span>
+                        <h3>Витамин C + Витамин E + Феруловая кислота</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 Готовые формулы: SkinCeuticals CE Ferulic, Timeless Vitamin C+E+Ferulic</span>
+                        <span>📦 Альтернативы: Geek & Gorgeous C-Glow, Paula's Choice C15 Super Booster</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему супер:</strong> Синергия! Vit E регенерирует Vit C. Феруловая стабилизирует оба и усиливает защиту от UVA в 8 раз.</p>
+                        <p><strong>Как использовать:</strong> Искать готовые формулы с этой комбинацией — так надёжнее и удобнее.</p>
+                        <div class="explain-result">💡 Результат: Мощнейшая антиоксидантная защита</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card good">
+                    <div class="explain-header">
+                        <span class="status">✅</span>
+                        <h3>Гиалуроновая кислота + Всё</h3>
+                    </div>
+                    <div class="explain-examples">
+                        <span>📦 ГК сыворотки: The Ordinary Hyaluronic Acid, Hada Labo Gokujyun, Vichy Minéral 89</span>
+                        <span>📦 В кремах: Neutrogena Hydro Boost, CeraVe Moisturizing, La Roche-Posay Hyalu B5</span>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему универсально:</strong> Гиалуроновая кислота не влияет на pH, не вступает в реакции, совместима со всеми активами.</p>
+                        <p><strong>Как использовать:</strong> Наносить на влажную кожу перед другими средствами (притягивает воду).</p>
+                        <div class="explain-result">💡 Лайфхак: В сухом климате HA может "вытягивать" воду из кожи — используй с окклюзивом поверх</div>
+                    </div>
+                </div>
+
+                <div class="compat-explain-card warning">
+                    <div class="explain-header">
+                        <span class="status">⚠️</span>
+                        <h3>AHA + BHA вместе</h3>
+                    </div>
+                    <div class="explain-body">
+                        <p><strong>Почему осторожно:</strong> Двойная эксфолиация, риск переотшелушивания. Но в готовых формулах с низкими % — можно.</p>
+                        <p><strong>Как использовать:</strong> Пилинги с комбинацией AHA+BHA — не чаще 1-2 раз в неделю. Мониторить барьер.</p>
+                        <div class="explain-result">💡 Признаки переотшелушивания: жжение, покраснение, блеск "как после бани"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="quick-ref">
+                <div class="section-title">⚡ Быстрая памятка</div>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <h4>🌅 Утренняя рутина</h4>
+                        <ul>
+                            <li>Витамин C ✓</li>
+                            <li>Ниацинамид ✓</li>
+                            <li>Гиалуроновая ✓</li>
+                            <li>SPF — обязательно!</li>
+                        </ul>
+                    </div>
+                    <div class="ref-card">
+                        <h4>🌙 Вечерняя рутина</h4>
+                        <ul>
+                            <li>Ретинол ✓</li>
+                            <li>AHA/BHA (чередовать)</li>
+                            <li>Пептиды ✓</li>
+                            <li>Масла/окклюзивы ✓</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHELF SCREEN -->
+        <div class="screen" id="screen-shelf">
+            <div class="shelf-stats">
+                <div class="shelf-main">
+                    <div class="shelf-score">74</div>
+                    <div class="shelf-label">Средняя оценка</div>
+                </div>
+                <div class="shelf-count">
+                    <span class="count-num">8</span>
+                    <span class="count-label">продуктов</span>
+                </div>
+            </div>
+
+            <div class="shelf-bar">
+                <div class="bar-segment bar-excellent" style="width:37%"></div>
+                <div class="bar-segment bar-good" style="width:25%"></div>
+                <div class="bar-segment bar-avg" style="width:25%"></div>
+                <div class="bar-segment bar-poor" style="width:13%"></div>
+            </div>
+            <div class="shelf-legend">
+                <span>✅ 3 отлично</span>
+                <span>👍 2 хорошо</span>
+                <span>👌 2 средне</span>
+                <span>⚠️ 1 плохо</span>
+            </div>
+
+            <div class="shelf-alert">
+                <div class="alert-header">⚠️ Рекомендуем заменить</div>
+                <p>Мицеллярная вода Garnier (54) — есть варианты лучше за те же деньги</p>
+                <button class="alert-action">Посмотреть альтернативы →</button>
+            </div>
+
+            <div class="section-title">Твои продукты</div>
+            <div class="shelf-products">
+                <div class="shelf-item" onclick="showScreen('result')">
+                    <div class="recent-score score-excellent">82</div>
+                    <div class="recent-info">
+                        <div class="recent-name">CeraVe Увлажняющий крем</div>
+                        <div class="recent-brand">Уход за кожей</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="shelf-item">
+                    <div class="recent-score score-excellent">88</div>
+                    <div class="recent-info">
+                        <div class="recent-name">COSRX Snail Mucin</div>
+                        <div class="recent-brand">Сыворотка</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+
+            <!-- Routine Suggestion -->
+            <div class="routine-section">
+                <div class="section-title">📋 Твоя рутина (на основе полки)</div>
+                <div class="routine-time">
+                    <h3>🌅 Утро</h3>
+                    <ol class="routine-steps">
+                        <li>Умывание / вода</li>
+                        <li>COSRX Snail Mucin (сыворотка)</li>
+                        <li>CeraVe Увлажняющий крем</li>
+                        <li class="routine-missing">⚠️ SPF — добавь солнцезащиту!</li>
+                    </ol>
+                </div>
+                <div class="routine-time">
+                    <h3>🌙 Вечер</h3>
+                    <ol class="routine-steps">
+                        <li>Двойное очищение</li>
+                        <li>COSRX Snail Mucin</li>
+                        <li>CeraVe Увлажняющий крем</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISCOVER SCREEN -->
+        <div class="screen" id="screen-discover">
+            <div class="discover-hero">
+                <span class="hero-badge">🔥 Тренд недели</span>
+                <h2>Корейская сыворотка покорила TikTok</h2>
+                <p>COSRX Advanced Snail — 94/100</p>
+                <div class="hero-stats">
+                    <span>⭐ 94/100</span>
+                    <span>👥 12K сохранили</span>
+                </div>
+            </div>
+
+            <div class="discover-categories">
+                <div class="disc-cat">
+                    <span class="cat-icon">👤</span>
+                    <div class="cat-text">
+                        <strong>Уход за кожей</strong>
+                        <span>243 продукта</span>
+                    </div>
+                </div>
+                <div class="disc-cat">
+                    <span class="cat-icon">💇</span>
+                    <div class="cat-text">
+                        <strong>Уход за волосами</strong>
+                        <span>156 продуктов</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">🏆 Популярные подборки</div>
+            <div class="discover-lists">
+                <div class="disc-list">
+                    <span class="list-icon">🏆</span>
+                    <div class="list-info">
+                        <strong>Топ-10 кремов 2026</strong>
+                        <span>Лучшие по версии Beauty Score</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="disc-list">
+                    <span class="list-icon">💰</span>
+                    <div class="list-info">
+                        <strong>Уход до 500 ₽</strong>
+                        <span>Качественно и недорого</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="disc-list">
+                    <span class="list-icon">🔄</span>
+                    <div class="list-info">
+                        <strong>Аналоги люкса</strong>
+                        <span>То же самое, но дешевле</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE SCREEN -->
+        <div class="screen" id="screen-profile">
+            <div class="profile-header">
+                <div class="profile-avatar">А</div>
+                <div class="profile-name">Анна</div>
+                <div class="profile-level">🏆 Эксперт уровня 2 • 23 скана</div>
+            </div>
+
+            <div class="section-title">Мой профиль кожи</div>
+            <div class="profile-items">
+                <div class="profile-item">
+                    <span class="item-icon">👤</span>
+                    <div class="item-info">
+                        <span class="item-label">Тип кожи</span>
+                        <span class="item-value">Сухая</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="profile-item">
+                    <span class="item-icon">💇</span>
+                    <div class="item-info">
+                        <span class="item-label">Тип волос</span>
+                        <span class="item-value">Тонкие, прямые</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="profile-item">
+                    <span class="item-icon">🎯</span>
+                    <div class="item-info">
+                        <span class="item-label">Проблемы</span>
+                        <span class="item-value">Сухость, шелушение</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+
+            <div class="section-title">Настройки</div>
+            <div class="profile-items">
+                <div class="profile-item">
+                    <span class="item-icon">🔔</span>
+                    <div class="item-info">
+                        <span class="item-value">Уведомления</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="profile-item">
+                    <span class="item-icon">⚙️</span>
+                    <div class="item-info">
+                        <span class="item-value">Настройки</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showScreen('scan')">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-label">Скан</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('shelf')">
+                <span class="nav-icon">📦</span>
+                <span class="nav-label">Полка</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('encyclopedia')">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">Инфо</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('discover')">
+                <span class="nav-icon">⭐</span>
+                <span class="nav-label">Тренды</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('profile')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Профиль</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-' + id)?.classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            
+            const navMap = { 'scan': 0, 'shelf': 1, 'encyclopedia': 2, 'discover': 3, 'profile': 4 };
+            if (navMap[id] !== undefined) {
+                document.querySelectorAll('.nav-item')[navMap[id]]?.classList.add('active');
+            }
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
