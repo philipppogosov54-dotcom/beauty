@@ -1,0 +1,392 @@
+// BeautyScore Database Schema
+// Enterprise-level security with 152-ФЗ compliance
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  
+  // Authentication
+  email         String?   @unique
+  emailVerified DateTime?
+  phone         String?   @unique  // Encrypted in application layer
+  phoneVerified DateTime?
+  passwordHash  String?
+  
+  // Profile
+  name          String?
+  avatar        String?   // S3 URL
+  skinType      SkinType?
+  hairType      HairType?
+  skinProblems  String[]  // Array of problems
+  
+  // OAuth connections
+  vkId          String?   @unique
+  yandexId      String?   @unique
+  telegramId    String?   @unique
+  
+  // Security
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+  lastLoginAt         DateTime?
+  lastLoginIp         String?
+  
+  // Settings
+  notificationsEnabled Boolean @default(true)
+  marketingEnabled     Boolean @default(false)
+  
+  // Gamification
+  level         Int       @default(1)
+  scansCount    Int       @default(0)
+  
+  // Metadata
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime? // Soft delete for GDPR/152-ФЗ
+  
+  // Relations
+  sessions      Session[]
+  refreshTokens RefreshToken[]
+  products      UserProduct[]
+  scans         Scan[]
+  routines      Routine[]
+  auditLogs     AuditLog[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([vkId])
+  @@index([yandexId])
+  @@index([telegramId])
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  userAgent    String
+  ip           String
+  deviceType   String?  // mobile, desktop, tablet
+  
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  lastActiveAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+model RefreshToken {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  token        String   @unique
+  userAgent    String
+  ip           String
+  
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  revokedAt    DateTime?
+
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+  @@map("refresh_tokens")
+}
+
+model VerificationCode {
+  id        String   @id @default(cuid())
+  type      CodeType
+  target    String   // email or phone (encrypted)
+  code      String   // hashed
+  attempts  Int      @default(0)
+  
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  usedAt    DateTime?
+  
+  @@index([target, type])
+  @@index([expiresAt])
+  @@map("verification_codes")
+}
+
+// ============================================
+// PRODUCTS & INGREDIENTS
+// ============================================
+
+model Product {
+  id           String   @id @default(cuid())
+  
+  // Identification
+  barcode      String?  @unique
+  name         String
+  brand        String?
+  category     ProductCategory
+  
+  // Analysis
+  score        Int?     // 0-100
+  ingredients  String[] // Raw ingredient list
+  
+  // Parsed ingredients with safety data
+  analyzedIngredients Json? // Array of { name, safety, function, concentration }
+  
+  // Images
+  imageUrl     String?
+  
+  // Metadata
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relations
+  userProducts UserProduct[]
+  scans        Scan[]
+  
+  @@index([barcode])
+  @@index([name])
+  @@index([brand])
+  @@map("products")
+}
+
+model Ingredient {
+  id           String   @id @default(cuid())
+  
+  // Names
+  nameRu       String
+  nameEn       String?
+  nameInci     String?  @unique // International nomenclature
+  aliases      String[] // Alternative names
+  
+  // Safety
+  safetyRating SafetyRating
+  ewgScore     Int?     // EWG score 1-10
+  
+  // Classification
+  category     IngredientCategory
+  functions    String[] // moisturizing, cleansing, etc.
+  
+  // Concerns
+  concerns     String[] // allergen, irritant, etc.
+  
+  // Skin type recommendations
+  goodFor      SkinType[]
+  badFor       SkinType[]
+  
+  // Compatibility
+  incompatibleWith String[] // Ingredient names that shouldn't be mixed
+  
+  // Description
+  description  String?
+  
+  // Metadata
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([nameRu])
+  @@index([nameEn])
+  @@index([nameInci])
+  @@map("ingredients")
+}
+
+// ============================================
+// USER PRODUCTS & ROUTINES
+// ============================================
+
+model UserProduct {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  
+  // User's notes
+  notes     String?
+  rating    Int?     // User's personal rating 1-5
+  
+  // Usage tracking
+  openedAt  DateTime?
+  finishedAt DateTime?
+  
+  // Status
+  status    ProductStatus @default(ACTIVE)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, productId])
+  @@index([userId])
+  @@index([productId])
+  @@map("user_products")
+}
+
+model Scan {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id])
+  
+  // Scan data
+  barcode   String?
+  imageUrl  String?  // Original scan image
+  
+  // Result
+  success   Boolean  @default(true)
+  errorType String?  // not_found, invalid_barcode, etc.
+  
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([productId])
+  @@index([createdAt])
+  @@map("scans")
+}
+
+model Routine {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  name      String
+  type      RoutineType
+  steps     Json     // Array of { order, productId, action, notes }
+  
+  isActive  Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("routines")
+}
+
+// ============================================
+// AUDIT & SECURITY
+// ============================================
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  action     String   // LOGIN, LOGOUT, VIEW_PROFILE, UPDATE_DATA, DELETE_ACCOUNT, etc.
+  resource   String   // User, Product, Scan, etc.
+  resourceId String?
+  
+  ip         String
+  userAgent  String
+  
+  metadata   Json?    // Additional context
+  
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// ============================================
+// RATE LIMITING (stored in Redis, but schema for reference)
+// ============================================
+
+model RateLimitRecord {
+  id        String   @id @default(cuid())
+  key       String   @unique // ip:endpoint or userId:endpoint
+  count     Int      @default(1)
+  expiresAt DateTime
+  
+  @@index([key])
+  @@index([expiresAt])
+  @@map("rate_limit_records")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum SkinType {
+  DRY
+  OILY
+  COMBINATION
+  NORMAL
+  SENSITIVE
+}
+
+enum HairType {
+  STRAIGHT
+  WAVY
+  CURLY
+  COILY
+  THIN
+  THICK
+  DAMAGED
+  COLORED
+}
+
+enum CodeType {
+  EMAIL_VERIFICATION
+  PHONE_VERIFICATION
+  PASSWORD_RESET
+  TWO_FACTOR
+}
+
+enum ProductCategory {
+  SKINCARE
+  HAIRCARE
+  MAKEUP
+  BODY
+  SUNCARE
+  FRAGRANCE
+  OTHER
+}
+
+enum SafetyRating {
+  SAFE
+  GENERALLY_SAFE
+  MODERATE_CONCERN
+  HIGH_CONCERN
+  AVOID
+}
+
+enum IngredientCategory {
+  MOISTURIZER
+  CLEANSER
+  ACTIVE
+  PRESERVATIVE
+  FRAGRANCE
+  COLORANT
+  SURFACTANT
+  EMULSIFIER
+  THICKENER
+  PH_ADJUSTER
+  ANTIOXIDANT
+  OTHER
+}
+
+enum ProductStatus {
+  ACTIVE
+  WISHLIST
+  FINISHED
+  ARCHIVED
+}
+
+enum RoutineType {
+  MORNING
+  EVENING
+  WEEKLY
+  CUSTOM
+}
